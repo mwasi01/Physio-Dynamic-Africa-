@@ -159,6 +159,213 @@ header{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 2px 14px r
 .ex-card h4{font-size:15px;color:var(--teal-dark);margin-bottom:4px}
 .ex-card span{font-size:12.5px;color:var(--muted)}
 .ex-card .meta{display:flex;justify-content:space-between;margin-top:12px;font-size:12px;color:var(--lime-dark);font-weight:600}
+/* Lymphatic specific styles */
+.lymph-section {
+  background: linear-gradient(135deg, #f0f9fb 0%, #e1f0f5 100%);
+  border-radius: var(--radius);
+  padding: 52px 0;
+}
+.lymph-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
+  align-items: center;
+}
+.lymph-list {
+  list-style: none;
+  margin-top: 18px;
+}
+.lymph-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  color: var(--ink);
+}
+.lymph-list i {
+  color: var(--lime-dark);
+  font-size: 20px;
+  margin-top: 4px;
+  width: 24px;
+  text-align: center;
+}
+.lymph-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--lime-light);
+  color: var(--lime-dark);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+.lymph-badge i {
+  font-size: 18px;
+}
+.lymph-highlight {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  border-left: 6px solid var(--lime);
+}
+.lymph-highlight h3 {
+  color: var(--teal-dark);
+  margin-bottom: 16px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.lymph-highlight h3 i {
+  color: var(--lime-dark);
+}
+.lymph-highlight p {
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+.lymph-highlight ul {
+  list-style: none;
+}
+.lymph-highlight ul li {
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+.lymph-highlight ul li i {
+  color: var(--lime-dark);
+  font-size: 14px;
+  width: 20px;
+}
+
+/* ===== Digital Rehabilitation Section Styles ===== */
+.digital-section {
+  background: linear-gradient(135deg, #073d4a 0%, #0b5566 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.digital-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.digital-section .container {
+  position: relative;
+}
+.digital-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 12px;
+}
+.digital-card {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: var(--radius);
+  padding: 34px 26px;
+  transition: .35s;
+  display: flex;
+  flex-direction: column;
+}
+.digital-card:hover {
+  background: rgba(255,255,255,.13);
+  transform: translateY(-8px);
+  border-color: rgba(215,236,143,.4);
+}
+.digital-card .d-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  color: #fff;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--lime), #7f9c22);
+}
+.digital-card:nth-child(2) .d-icon { background: linear-gradient(135deg, #128096, #0b5566); }
+.digital-card:nth-child(3) .d-icon { background: linear-gradient(135deg, #e8a13a, #c97f1b); }
+.digital-card:nth-child(4) .d-icon { background: linear-gradient(135deg, #8a5fc0, #6a3fa0); }
+.digital-card:nth-child(5) .d-icon { background: linear-gradient(135deg, #2ab7a9, #1a8a7f); }
+.digital-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #fff;
+  font-weight: 600;
+}
+.digital-card p {
+  font-size: 14px;
+  color: rgba(255,255,255,.78);
+  line-height: 1.65;
+  flex: 1;
+}
+.digital-card .d-tag {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: #d7ec8f;
+}
+.digital-intro {
+  max-width: 780px;
+  margin: 0 auto 52px;
+  text-align: center;
+}
+.digital-intro p {
+  color: rgba(255,255,255,.82);
+  font-size: 16px;
+  margin-top: 12px;
+}
+.digital-section .kicker {
+  color: #d7ec8f;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-size: 13px;
+}
+.digital-section h2 {
+  font-size: clamp(30px, 4vw, 42px);
+  color: #fff;
+  margin: 8px 0 12px;
+  font-weight: 700;
+}
+.digital-note {
+  margin-top: 44px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: var(--radius);
+  padding: 28px 34px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.digital-note i {
+  font-size: 36px;
+  color: #d7ec8f;
+}
+.digital-note p {
+  flex: 1;
+  font-size: 15px;
+  color: rgba(255,255,255,.85);
+  min-width: 220px;
+}
+.digital-note .btn {
+  flex-shrink: 0;
+}
+
 /* Contact */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
 .contact-info{display:flex;flex-direction:column;gap:18px}
@@ -192,12 +399,13 @@ footer a:hover{color:#d7ec8f}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:none}
 @media (max-width:960px){
-  .hero-grid,.split,.contact-grid,.ph-grid{grid-template-columns:1fr}
+  .hero-grid,.split,.contact-grid,.ph-grid,.lymph-grid{grid-template-columns:1fr}
   .cards,.svc-detail{grid-template-columns:1fr 1fr}
   .why-grid,.feat-grid{grid-template-columns:1fr 1fr}
   .ex-grid{grid-template-columns:1fr 1fr}
   .steps{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
+  .digital-grid{grid-template-columns:1fr 1fr}
   .nav-links{position:fixed;inset:0 0 0 auto;width:min(320px,80%);background:#fff;flex-direction:column;align-items:flex-start;padding:90px 34px;gap:22px;transform:translateX(100%);transition:.4s;box-shadow:-10px 0 30px rgba(0,0,0,.12)}
   .nav-links.open{transform:none}
   .hamburger{display:flex;z-index:110}
@@ -207,8 +415,12 @@ footer a:hover{color:#d7ec8f}
 }
 @media (max-width:640px){
   .cards,.why-grid,.svc-detail,.footer-grid,.feat-grid,.ex-grid{grid-template-columns:1fr}
+  .digital-grid{grid-template-columns:1fr}
   section{padding:54px 0}
   .hero{min-height:auto;padding:64px 0}
+  .lymph-grid{grid-template-columns:1fr}
+  .digital-note{flex-direction:column;text-align:center}
+  .digital-note .btn{width:100%;justify-content:center}
 }
 
 </style>
@@ -305,6 +517,106 @@ footer a:hover{color:#d7ec8f}
     </div>
   </div>
 </section>
+
+<!-- ===== DIGITAL REHABILITATION SECTION ===== -->
+<section class="digital-section">
+  <div class="container">
+    <div class="digital-intro reveal">
+      <span class="kicker">Future-Forward Physiotherapy</span>
+      <h2>Digital Rehabilitation</h2>
+      <p>We combine cutting-edge technology with evidence-based physiotherapy to deliver faster, smarter and more engaging recovery. Our digital rehabilitation programmes are tailored to your condition and goals.</p>
+    </div>
+
+    <div class="digital-grid">
+      <!-- 1. Robotic Treatment -->
+      <div class="digital-card reveal">
+        <div class="d-icon"><i class="fa-solid fa-robot"></i></div>
+        <h3>Robotic Treatment</h3>
+        <p>Robotic-assisted therapy provides high-intensity, repetitive and precise movement training. Ideal for neurological and orthopaedic rehabilitation, our robotic systems help restore gait, upper-limb function and motor control with real-time feedback.</p>
+        <span class="d-tag">Precision &amp; Repetition</span>
+      </div>
+
+      <!-- 2. Virtual Reality -->
+      <div class="digital-card reveal">
+        <div class="d-icon"><i class="fa-solid fa-vr-cardboard"></i></div>
+        <h3>Virtual Reality</h3>
+        <p>Immersive VR environments turn exercise into an engaging experience. Patients perform functional movements, balance tasks and cognitive-motor training while having fun — improving adherence and outcomes.</p>
+        <span class="d-tag">Engagement &amp; Adherence</span>
+      </div>
+
+      <!-- 3. Augmented Reality -->
+      <div class="digital-card reveal">
+        <div class="d-icon"><i class="fa-solid fa-glasses"></i></div>
+        <h3>Augmented Reality</h3>
+        <p>AR overlays digital instructions and visual cues onto the real world. It's perfect for guided exercise execution, posture correction and home rehabilitation — giving you real-time feedback as you move.</p>
+        <span class="d-tag">Real-Time Guidance</span>
+      </div>
+
+      <!-- 4. Smart Devices -->
+      <div class="digital-card reveal">
+        <div class="d-icon"><i class="fa-solid fa-microchip"></i></div>
+        <h3>Smart Devices</h3>
+        <p>Wearable sensors and smart devices track your movement quality, range of motion, muscle activity and progress. Your physiotherapist uses this objective data to fine-tune your programme.</p>
+        <span class="d-tag">Data-Driven Recovery</span>
+      </div>
+
+      <!-- 5. Telerehabilitation -->
+      <div class="digital-card reveal">
+        <div class="d-icon"><i class="fa-solid fa-laptop-medical"></i></div>
+        <h3>Telerehabilitation</h3>
+        <p>Access expert physiotherapy from anywhere. Through secure video consultations, remote assessments and digital exercise prescription, we bring the clinic to your home, office or travel destination.</p>
+        <span class="d-tag">Care Anywhere</span>
+      </div>
+    </div>
+
+    <div class="digital-note reveal">
+      <i class="fa-solid fa-lightbulb"></i>
+      <p>Digital rehabilitation is not a replacement for hands-on care — it's an enhancement. Every programme is supervised by a licensed physiotherapist and tailored to your individual needs.</p>
+      <a href="tel:0182551799" class="btn btn-lime"><i class="fa-solid fa-phone"></i> Enquire About Digital Rehab</a>
+    </div>
+  </div>
+</section>
+
+<!-- Lymphatic Management Section -->
+<section class="lymph-section">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker">Specialist Care</span>
+      <h2>Lymphatic Management</h2>
+      <p>Comprehensive lymphatic therapy integrated into your rehabilitation programme for optimal recovery.</p>
+    </div>
+    <div class="lymph-grid">
+      <div class="reveal">
+        <span class="lymph-badge"><i class="fa-solid fa-hand-holding-droplet"></i> Now Available</span>
+        <h2 style="font-size:clamp(26px,3.4vw,36px);color:var(--teal-dark);margin-bottom:16px;font-weight:700">Lymphatic Drainage &amp; Management</h2>
+        <p style="color:var(--muted);font-size:16px;margin-bottom:20px">We now offer specialised lymphatic management as part of our treatment programmes. Whether you're recovering from surgery, managing lymphoedema, or need post-injury swelling reduction, our physiotherapists are trained in advanced lymphatic techniques.</p>
+        <ul class="lymph-list">
+          <li><i class="fa-solid fa-check-circle"></i> <span><strong>Manual Lymphatic Drainage (MLD)</strong> — gentle, rhythmic techniques to stimulate lymph flow and reduce swelling.</span></li>
+          <li><i class="fa-solid fa-check-circle"></i> <span><strong>Complete Decongestive Therapy (CDT)</strong> — combining MLD, compression therapy, exercise, and skin care.</span></li>
+          <li><i class="fa-solid fa-check-circle"></i> <span><strong>Post-Surgical Lymphatic Care</strong> — reduce oedema and improve healing after orthopaedic, oncologic, or cosmetic procedures.</span></li>
+          <li><i class="fa-solid fa-check-circle"></i> <span><strong>Lymphoedema Management</strong> — personalised programmes for primary and secondary lymphoedema.</span></li>
+          <li><i class="fa-solid fa-check-circle"></i> <span><strong>Compression Garment Fitting &amp; Education</strong> — guidance on appropriate compression and self-management strategies.</span></li>
+          <li><i class="fa-solid fa-check-circle"></i> <span><strong>Exercise Prescription for Lymphatic Health</strong> — tailored movement programmes to support lymphatic function.</span></li>
+        </ul>
+      </div>
+      <div class="lymph-highlight reveal">
+        <h3><i class="fa-solid fa-heart-pulse"></i> Why It Matters</h3>
+        <p>Lymphatic management is essential for patients experiencing swelling, fibrosis, or compromised lymphatic function. Our evidence-based approach helps:</p>
+        <ul>
+          <li><i class="fa-solid fa-circle-check"></i> Reduce pain and swelling</li>
+          <li><i class="fa-solid fa-circle-check"></i> Improve joint mobility and function</li>
+          <li><i class="fa-solid fa-circle-check"></i> Prevent complications post-surgery</li>
+          <li><i class="fa-solid fa-circle-check"></i> Enhance tissue healing and recovery</li>
+          <li><i class="fa-solid fa-circle-check"></i> Support long-term management of lymphoedema</li>
+          <li><i class="fa-solid fa-circle-check"></i> Improve quality of life and independence</li>
+        </ul>
+        <p style="margin-top:18px;font-size:14.5px;color:var(--teal-dark);font-weight:500"><i class="fa-solid fa-phone" style="color:var(--lime-dark);margin-right:8px"></i> Contact us to discuss how lymphatic management can be integrated into your care plan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sample Exercise Programme -->
 <section>
   <div class="container">
     <div class="sec-head reveal">
@@ -355,6 +667,8 @@ footer a:hover{color:#d7ec8f}
         <li><i class="fa-solid fa-chevron-right"></i>Post-Surgical Rehabilitation</li>
         <li><i class="fa-solid fa-chevron-right"></i>Neurological Rehabilitation</li>
         <li><i class="fa-solid fa-chevron-right"></i>Sports Performance</li>
+        <li><i class="fa-solid fa-chevron-right"></i>Lymphatic Management</li>
+        <li><i class="fa-solid fa-chevron-right"></i>Digital Rehabilitation</li>
         <li><i class="fa-solid fa-chevron-right"></i>Home-Based &amp; Mobile Physio</li>
       </ul>
     </div>
