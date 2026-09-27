@@ -1,0 +1,8 @@
+.git
+.gitignore
+.gitattributes
+.wrangler
+node_modules
+wrangler.jsonc
+README.md
+*.md
