@@ -109,6 +109,13 @@ header{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 2px 14px r
 .svc-box h3{font-size:20px;color:var(--teal-dark);margin-bottom:12px;display:flex;align-items:center;gap:12px}
 .svc-box h3 i{color:var(--lime-dark)}
 .svc-box p{color:var(--muted);font-size:14.5px}
+/* Featured service box with sub-list */
+.svc-box.featured{border-left-color:var(--lime);background:linear-gradient(135deg,#ffffff,#f9fdf0);position:relative;overflow:hidden}
+.svc-box.featured::after{content:"";position:absolute;top:0;right:0;width:120px;height:120px;background:radial-gradient(circle,rgba(164,198,57,.15),transparent 70%);border-radius:50%;transform:translate(30%,-30%)}
+.svc-box .svc-tag{display:inline-block;margin-bottom:12px;font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--lime-dark);background:var(--lime-light);padding:5px 12px;border-radius:20px}
+.svc-box .sub-list{margin-top:16px;display:grid;gap:8px}
+.svc-box .sub-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--ink)}
+.svc-box .sub-list li i{color:var(--lime-dark);font-size:13px;margin-top:5px;flex-shrink:0}
 /* Programme (app-style) */
 .ph-hero{position:relative;overflow:hidden;color:#fff;padding:96px 0 80px;background:linear-gradient(120deg,#052530 0%,#0b5566 55%,#4a6b14 130%)}
 .ph-hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:26px 26px}
@@ -243,6 +250,8 @@ footer a:hover{color:#d7ec8f}
       <p>Every programme is evidence-based and tailored to you — in our clinic, your home, or your workplace.</p>
     </div>
     <div class="svc-detail">
+
+      <!-- Existing Services -->
       <div class="svc-box reveal">
         <h3><i class="fa-solid fa-bone"></i>Musculoskeletal &amp; Orthopedic Rehab</h3>
         <p>Restoring strength, mobility &amp; function for joints, muscles, and bones through evidence-based therapy. Ideal for back pain, arthritis, joint injuries, and post-fracture recovery.</p>
@@ -259,6 +268,36 @@ footer a:hover{color:#d7ec8f}
         <h3><i class="fa-solid fa-person-running"></i>Sports Performance &amp; Injury Prevention</h3>
         <p>Conditioning, injury prevention programs, and performance therapy for athletes at all levels — from weekend warriors to competitive sportspeople.</p>
       </div>
+
+      <!-- NEW: Lymphatic Management -->
+      <div class="svc-box featured reveal">
+        <span class="svc-tag">New Service</span>
+        <h3><i class="fa-solid fa-hand-holding-droplet"></i>Lymphatic Management</h3>
+        <p>Specialised lymphatic therapy to reduce swelling, improve tissue healing, and support recovery for post-surgical, oncologic, and chronic conditions.</p>
+        <ul class="sub-list">
+          <li><i class="fa-solid fa-circle-check"></i>Manual Lymphatic Drainage (MLD)</li>
+          <li><i class="fa-solid fa-circle-check"></i>Complete Decongestive Therapy (CDT)</li>
+          <li><i class="fa-solid fa-circle-check"></i>Post-Surgical Lymphatic Care</li>
+          <li><i class="fa-solid fa-circle-check"></i>Lymphoedema Management</li>
+          <li><i class="fa-solid fa-circle-check"></i>Compression Garment Fitting &amp; Education</li>
+        </ul>
+      </div>
+
+      <!-- NEW: Digital Rehabilitation with Sub-areas -->
+      <div class="svc-box featured reveal">
+        <span class="svc-tag">New Service</span>
+        <h3><i class="fa-solid fa-laptop-medical"></i>Digital Rehabilitation</h3>
+        <p>Technology-driven recovery that blends evidence-based physiotherapy with cutting-edge tools for faster, smarter, and more engaging rehabilitation.</p>
+        <ul class="sub-list">
+          <li><i class="fa-solid fa-robot"></i><strong>Robotic Treatment</strong> — precise, repetitive movement training</li>
+          <li><i class="fa-solid fa-vr-cardboard"></i><strong>Virtual Reality</strong> — immersive, engaging exercise environments</li>
+          <li><i class="fa-solid fa-glasses"></i><strong>Augmented Reality</strong> — real-time visual guidance and feedback</li>
+          <li><i class="fa-solid fa-microchip"></i><strong>Smart Devices</strong> — wearable sensors and objective tracking</li>
+          <li><i class="fa-solid fa-laptop-medical"></i><strong>Telerehabilitation</strong> — remote consultations and care anywhere</li>
+        </ul>
+      </div>
+
+      <!-- Remaining Existing Services -->
       <div class="svc-box reveal">
         <h3><i class="fa-solid fa-briefcase-medical"></i>Corporate Wellness &amp; Ergonomics</h3>
         <p>On-site workplace assessments, ergonomic solutions, and corporate wellness programmes that keep teams healthy, productive, and pain-free.</p>
@@ -267,9 +306,49 @@ footer a:hover{color:#d7ec8f}
         <h3><i class="fa-solid fa-house-medical"></i>Home-Based &amp; Mobile Physio</h3>
         <p>Convenient physiotherapy delivered at your home for comfort, accessibility, and continuity of care — perfect for seniors, post-surgical patients, and busy schedules.</p>
       </div>
+
     </div>
   </div>
 </section>
+
+<!-- Digital Rehabilitation Deep-Dive Section -->
+<section style="background:linear-gradient(135deg,var(--teal-dark),var(--teal));color:#fff">
+  <div class="container">
+    <div class="sec-head reveal" style="margin-bottom:44px">
+      <span class="kicker" style="color:#d7ec8f">Explore Digital Rehab</span>
+      <h2 style="color:#fff">The Five Pillars of Digital Rehabilitation</h2>
+      <p style="color:rgba(255,255,255,.82)">Each pillar is supervised by a licensed physiotherapist and tailored to your goals.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <i class="fa-solid fa-robot"></i>
+        <h3>Robotic Treatment</h3>
+        <p>High-intensity, precise movement training for neurological and orthopaedic recovery.</p>
+      </div>
+      <div class="why-item reveal">
+        <i class="fa-solid fa-vr-cardboard"></i>
+        <h3>Virtual Reality</h3>
+        <p>Immersive environments that turn exercise into engaging, motivating sessions.</p>
+      </div>
+      <div class="why-item reveal">
+        <i class="fa-solid fa-glasses"></i>
+        <h3>Augmented Reality</h3>
+        <p>Digital instructions overlaid on the real world for guided, correct execution.</p>
+      </div>
+      <div class="why-item reveal">
+        <i class="fa-solid fa-microchip"></i>
+        <h3>Smart Devices</h3>
+        <p>Wearables that track movement quality, range, and progress objectively.</p>
+      </div>
+      <div class="why-item reveal" style="grid-column:span 4 / span 4;max-width:520px;margin:0 auto">
+        <i class="fa-solid fa-laptop-medical"></i>
+        <h3>Telerehabilitation</h3>
+        <p>Secure video consultations and remote care — expert physiotherapy wherever you are.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="cta-band">
   <div class="container reveal">
     <h2>Not sure which service you need?</h2>
@@ -301,6 +380,8 @@ footer a:hover{color:#d7ec8f}
         <li><i class="fa-solid fa-chevron-right"></i>Post-Surgical Rehabilitation</li>
         <li><i class="fa-solid fa-chevron-right"></i>Neurological Rehabilitation</li>
         <li><i class="fa-solid fa-chevron-right"></i>Sports Performance</li>
+        <li><i class="fa-solid fa-chevron-right"></i>Lymphatic Management</li>
+        <li><i class="fa-solid fa-chevron-right"></i>Digital Rehabilitation</li>
         <li><i class="fa-solid fa-chevron-right"></i>Home-Based &amp; Mobile Physio</li>
       </ul>
     </div>
