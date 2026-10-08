@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home | Physio Dynamic Africa</title>
-<meta name="description" content="Physio Dynamic Africa — Redefining Physio in Africa. Evidence-based physiotherapy and rehabilitation in Mombasa, Kenya.">
+<title>Partner With Us | Physio Dynamic Africa</title>
+<meta name="description" content="Physio Dynamic Africa — Corporate & institutional physiotherapy partnerships. We deliver rehabilitation services to companies, hospitals, insurers, schools and sports organizations across Africa.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -56,7 +56,7 @@ header{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 2px 14px r
 .hero .eyebrow i{color:#d7ec8f}
 .hero h2{font-size:clamp(38px,5.4vw,60px);line-height:1.12;margin-bottom:20px;font-weight:700}
 .hero h2 em{color:#d7ec8f;font-style:normal}
-.hero p.lead{font-size:18px;color:rgba(255,255,255,.85);max-width:520px;margin-bottom:34px}
+.hero p.lead{font-size:18px;color:rgba(255,255,255,.85);max-width:560px;margin-bottom:34px}
 .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
 .hero-logo-card{background:#fff;border-radius:24px;padding:40px 30px;box-shadow:0 30px 60px rgba(0,0,0,.35);text-align:center}
 .hero-logo-card img{width:min(280px,80%);margin:0 auto}
@@ -64,7 +64,7 @@ header{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 2px 14px r
 .hero-strip{background:var(--teal-dark);color:#fff;padding:18px 0}
 .hero-strip .container{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;font-size:14.5px}
 .hero-strip i{color:#d7ec8f;margin-right:8px}
-.sec-head{text-align:center;max-width:680px;margin:0 auto 52px}
+.sec-head{text-align:center;max-width:720px;margin:0 auto 52px}
 .sec-head .kicker{color:var(--lime-dark);font-weight:600;text-transform:uppercase;letter-spacing:2.5px;font-size:13px}
 .sec-head h2{font-size:clamp(30px,4vw,42px);color:var(--teal-dark);margin:8px 0 12px;font-weight:700}
 .sec-head p{color:var(--muted);font-size:16px}
@@ -111,6 +111,49 @@ header{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 2px 14px r
 .svc-box h3{font-size:20px;color:var(--teal-dark);margin-bottom:12px;display:flex;align-items:center;gap:12px}
 .svc-box h3 i{color:var(--lime-dark)}
 .svc-box p{color:var(--muted);font-size:14.5px}
+
+/* ===== Partner types grid ===== */
+.partner-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.partner-card{
+  background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:28px 22px;text-align:center;transition:.3s;
+  border-top:4px solid var(--teal);
+}
+.partner-card:hover{transform:translateY(-6px);border-top-color:var(--lime)}
+.partner-card:nth-child(2n) .partner-icon{background:linear-gradient(135deg,var(--lime),#7f9c22)}
+.partner-card:nth-child(3n) .partner-icon{background:linear-gradient(135deg,#e8a13a,#c97f1b)}
+.partner-card:nth-child(5n) .partner-icon{background:linear-gradient(135deg,#8a5fc0,#6a3fa0)}
+.partner-icon{
+  width:56px;height:56px;margin:0 auto 14px;border-radius:16px;
+  display:grid;place-items:center;font-size:24px;color:#fff;
+  background:linear-gradient(135deg,var(--teal),#128096);
+}
+.partner-card h4{font-size:16px;color:var(--teal-dark);margin-bottom:6px}
+.partner-card p{font-size:13.5px;color:var(--muted)}
+
+/* ===== Process steps (engagement model) ===== */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:pstep}
+.process-step{
+  background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:32px 24px;position:relative;counter-increment:pstep;
+  border-top:4px solid var(--lime);
+}
+.process-step::before{
+  content:counter(pstep,decimal-leading-zero);
+  position:absolute;top:18px;right:20px;
+  font-size:38px;font-weight:700;color:var(--teal-light);
+}
+.process-step i{
+  width:52px;height:52px;border-radius:14px;display:grid;place-items:center;
+  font-size:22px;color:#fff;margin-bottom:16px;
+  background:linear-gradient(135deg,var(--teal),#128096);
+}
+.process-step:nth-child(2) i{background:linear-gradient(135deg,var(--lime),#7f9c22)}
+.process-step:nth-child(3) i{background:linear-gradient(135deg,#e8a13a,#c97f1b)}
+.process-step:nth-child(4) i{background:linear-gradient(135deg,#8a5fc0,#6a3fa0)}
+.process-step h4{font-size:16px;color:var(--teal-dark);margin-bottom:6px}
+.process-step p{font-size:13.5px;color:var(--muted)}
+
 /* App Download Section */
 .app-download{
   background:linear-gradient(135deg,#052530 0%,#0b5566 55%,#4a6b14 130%);
@@ -145,7 +188,6 @@ header{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 2px 14px r
 .app-phone h4{font-size:16px;font-weight:600;color:#fff}
 .app-phone small{font-size:12px;color:rgba(255,255,255,.6);display:block;margin-bottom:8px}
 .app-phone .btn-android{font-size:13.5px;padding:11px 20px;justify-content:center}
-/* Floating Android download button */
 .float-android{
   position:fixed;bottom:90px;right:22px;width:58px;height:58px;border-radius:50%;
   background:#3ddc84;color:#0b3d1e;display:grid;place-items:center;font-size:26px;
@@ -203,6 +245,8 @@ footer a:hover{color:#d7ec8f}
   .hero-grid,.split,.contact-grid,.app-grid{grid-template-columns:1fr}
   .cards,.svc-detail{grid-template-columns:1fr 1fr}
   .why-grid{grid-template-columns:1fr 1fr}
+  .partner-grid{grid-template-columns:1fr 1fr}
+  .process-grid{grid-template-columns:1fr 1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .nav-links{position:fixed;inset:0 0 0 auto;width:min(320px,80%);background:#fff;flex-direction:column;align-items:flex-start;padding:90px 34px;gap:22px;transform:translateX(100%);transition:.4s;box-shadow:-10px 0 30px rgba(0,0,0,.12)}
   .nav-links.open{transform:none}
@@ -213,6 +257,7 @@ footer a:hover{color:#d7ec8f}
 }
 @media (max-width:640px){
   .cards,.why-grid,.svc-detail,.footer-grid{grid-template-columns:1fr}
+  .partner-grid,.process-grid{grid-template-columns:1fr}
   section{padding:54px 0}
   .hero{min-height:auto;padding:64px 0}
   .app-actions{flex-direction:column;align-items:stretch}
@@ -237,21 +282,21 @@ footer a:hover{color:#d7ec8f}
   </div>
 </header>
 
+<!-- ===== HERO — Reframed for B2B ===== -->
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <span class="eyebrow"><i class="fa-solid fa-heart-pulse"></i> Physiotherapy &amp; Rehabilitation — Mombasa, Kenya</span>
-      <h2>Redefining <em>Physio</em><br>in Africa</h2>
-      <p class="lead">Modern, innovative physiotherapy blending evidence-based care with technology-driven solutions — restoring mobility, preventing injury, and empowering you to live an active, pain-free life.</p>
+      <span class="eyebrow"><i class="fa-solid fa-handshake"></i> Corporate &amp; Institutional Physiotherapy Partnerships</span>
+      <h2>Physiotherapy,<br><em>delivered for your people</em></h2>
+      <p class="lead">We partner with companies, hospitals, insurers, schools, sports organizations and community institutions to design and deliver physiotherapy and rehabilitation services for the people in their care — on-site, on-call, or digitally.</p>
       <div class="hero-actions">
-        <a href="contact.html" class="btn btn-lime"><i class="fa-solid fa-paper-plane"></i> Get In Touch</a>
-        <a href="app-debug.apk" download class="btn btn-android"><i class="fa-brands fa-android"></i> Download App</a>
-        <a href="services.html" class="btn btn-outline">Explore Services <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="contact.html" class="btn btn-lime"><i class="fa-solid fa-paper-plane"></i> Request a Partnership Proposal</a>
+        <a href="services.html" class="btn btn-outline">Our Partnership Services <i class="fa-solid fa-arrow-right"></i></a>
       </div>
     </div>
     <div class="hero-logo-card reveal">
       <img src="images/logo-vertical.jpg" alt="Physio Dynamic Africa logo">
-      <p><strong>Professional &middot; Compassionate &middot; Results-Driven</strong><br>
+      <p><strong>Trusted by organizations across Africa</strong><br>
       <i class="fa-solid fa-envelope" style="color:var(--lime-dark);margin-right:6px"></i>info@physiodynamicafrica.com<br>
       <i class="fa-solid fa-location-dot" style="color:var(--lime-dark);margin-right:6px"></i>Mombasa, Kenya</p>
     </div>
@@ -261,77 +306,197 @@ footer a:hover{color:#d7ec8f}
   <div class="container">
     <span><i class="fa-solid fa-envelope"></i>info@physiodynamicafrica.com</span>
     <span><i class="fa-solid fa-location-dot"></i>Mombasa, Kenya</span>
+    <span><i class="fa-solid fa-globe"></i>physiodynamicafrica.com</span>
   </div>
 </div>
 
-<!-- Services Section -->
+<!-- ===== WHO WE PARTNER WITH ===== -->
 <section>
   <div class="container">
     <div class="sec-head reveal">
-      <span class="kicker">What We Do</span>
-      <h2>Comprehensive Physiotherapy &amp; Rehabilitation Solutions</h2>
-      <p>From clinic-based rehab to home visits — we bring transformative care to you.</p>
+      <span class="kicker">Who We Partner With</span>
+      <h2>Institutions &amp; Organizations We Serve</h2>
+      <p>We don't just treat individuals — we build physiotherapy capacity inside the organizations that care for them.</p>
     </div>
-    <div class="cards">
-      <div class="card reveal">
-        <div class="card-head"><div class="card-icon"><i class="fa-solid fa-bone"></i></div><h3>Musculoskeletal &amp; Orthopedic Rehab</h3></div>
-        <p class="card-body">Restoring strength, mobility &amp; function for joints, muscles, and bones through evidence-based therapy.</p>
+    <div class="partner-grid">
+      <div class="partner-card reveal">
+        <div class="partner-icon"><i class="fa-solid fa-building"></i></div>
+        <h4>Corporates &amp; Employers</h4>
+        <p>On-site wellness, ergonomic assessments, injury prevention and staff rehabilitation programmes.</p>
       </div>
-      <div class="card reveal">
-        <div class="card-head"><div class="card-icon"><i class="fa-solid fa-bandage"></i></div><h3>Post-Surgical Rehabilitation</h3></div>
-        <p class="card-body">Targeted rehabilitation to support safe recovery and regain mobility after surgery.</p>
+      <div class="partner-card reveal">
+        <div class="partner-icon"><i class="fa-solid fa-hospital"></i></div>
+        <h4>Hospitals &amp; Clinics</h4>
+        <p>Outsourced physiotherapy departments, specialist cover and rehabilitation capacity support.</p>
       </div>
-      <div class="card reveal">
-        <div class="card-head"><div class="card-icon"><i class="fa-solid fa-brain"></i></div><h3>Neurological Rehabilitation</h3></div>
-        <p class="card-body">Specialized care to improve movement, coordination, and independence for neurological conditions.</p>
+      <div class="partner-card reveal">
+        <div class="partner-icon"><i class="fa-solid fa-shield-heart"></i></div>
+        <h4>Insurers &amp; HMOs</h4>
+        <p>Provider networks, clinical rehabilitation pathways and outcome-based case management.</p>
       </div>
-      <div class="card reveal">
-        <div class="card-head"><div class="card-icon"><i class="fa-solid fa-person-running"></i></div><h3>Sports Performance &amp; Injury Prevention</h3></div>
-        <p class="card-body">Conditioning, injury prevention programs, and performance therapy for athletes at all levels.</p>
+      <div class="partner-card reveal">
+        <div class="partner-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <h4>Schools &amp; Universities</h4>
+        <p>Student athlete care, posture and desk-health programmes and campus rehabilitation services.</p>
       </div>
-      <div class="card featured reveal">
-        <div class="card-head"><div class="card-icon"><i class="fa-solid fa-hand-holding-droplet"></i></div><h3>Lymphatic Management</h3></div>
-        <p class="card-body">Manual lymphatic drainage, complete decongestive therapy, and lymphoedema management for post-surgical and chronic swelling conditions.</p>
-        <span class="card-tag">New Service</span>
+      <div class="partner-card reveal">
+        <div class="partner-icon"><i class="fa-solid fa-futbol"></i></div>
+        <h4>Sports Organizations</h4>
+        <p>Team physio, performance screening, injury prevention and athlete return-to-play programmes.</p>
       </div>
-      <div class="card featured reveal">
-        <div class="card-head"><div class="card-icon"><i class="fa-solid fa-laptop-medical"></i></div><h3>Digital Rehabilitation</h3></div>
-        <p class="card-body">Robotic therapy, virtual &amp; augmented reality, smart devices, and telerehabilitation — technology-driven recovery for faster results.</p>
-        <span class="card-tag">New Service</span>
+      <div class="partner-card reveal">
+        <div class="partner-icon"><i class="fa-solid fa-people-group"></i></div>
+        <h4>NGOs &amp; Community</h4>
+        <p>Community rehabilitation outreach, disability inclusion and mobile physiotherapy services.</p>
       </div>
-      <div class="card reveal">
-        <div class="card-head"><div class="card-icon"><i class="fa-solid fa-briefcase-medical"></i></div><h3>Corporate Wellness &amp; Ergonomics</h3></div>
-        <p class="card-body">On-site workplace assessments, ergonomic solutions, and corporate wellness programmes.</p>
+      <div class="partner-card reveal">
+        <div class="partner-icon"><i class="fa-solid fa-hotel"></i></div>
+        <h4>Hospitality &amp; Wellness</h4>
+        <p>Guest wellness programmes, sports recovery and physiotherapy services for resorts and spas.</p>
       </div>
-      <div class="card reveal">
-        <div class="card-head"><div class="card-icon"><i class="fa-solid fa-house-medical"></i></div><h3>Home-Based &amp; Mobile Physio</h3></div>
-        <p class="card-body">Convenient physiotherapy delivered at your home for comfort, accessibility, and continuity of care.</p>
+      <div class="partner-card reveal">
+        <div class="partner-icon"><i class="fa-solid fa-plane-departure"></i></div>
+        <h4>Expat &amp; Relocation</h4>
+        <p>Rehabilitation support for expatriate staff, diplomatic missions and international organizations.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== ANDROID APP DOWNLOAD SECTION ===== -->
+<!-- ===== PARTNERSHIP SERVICES ===== -->
+<section style="background:linear-gradient(135deg,#f0f9fb 0%,#e1f0f5 100%)">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker">What We Deliver</span>
+      <h2>Physiotherapy Services For Your Organization</h2>
+      <p>Every partnership is designed around your operations, your people and your outcomes.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="card-head"><div class="card-icon"><i class="fa-solid fa-briefcase-medical"></i></div><h3>Corporate Wellness &amp; Ergonomics</h3></div>
+        <p class="card-body">On-site workplace assessments, ergonomic solutions, injury prevention workshops and staff rehabilitation programmes that keep teams healthy, productive and pain-free.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-head"><div class="card-icon"><i class="fa-solid fa-handshake-angle"></i></div><h3>Outsourced Physiotherapy</h3></div>
+        <p class="card-body">We embed licensed physiotherapists into your facility — hospitals, clinics, wellness centres or wellness programs — on a schedule that fits your operations.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-head"><div class="card-icon"><i class="fa-solid fa-notes-medical"></i></div><h3>Clinical Rehabilitation Pathways</h3></div>
+        <p class="card-body">Evidence-based treatment protocols for post-surgical, orthopaedic, neurological and lymphatic cases — standardised for insurers, HMOs and hospital networks.</p>
+      </div>
+      <div class="card featured reveal">
+        <div class="card-head"><div class="card-icon"><i class="fa-solid fa-laptop-medical"></i></div><h3>Digital Rehabilitation Programmes</h3></div>
+        <p class="card-body">Robotic therapy, virtual &amp; augmented reality, smart devices and telerehabilitation — designed for at-scale delivery across your network or workforce.</p>
+        <span class="card-tag">Digital-Ready</span>
+      </div>
+      <div class="card featured reveal">
+        <div class="card-head"><div class="card-icon"><i class="fa-solid fa-hand-holding-droplet"></i></div><h3>Lymphatic Management</h3></div>
+        <p class="card-body">Manual lymphatic drainage, complete decongestive therapy and lymphoedema management — a specialist service for post-surgical, oncologic and chronic cases.</p>
+        <span class="card-tag">Specialist</span>
+      </div>
+      <div class="card reveal">
+        <div class="card-head"><div class="card-icon"><i class="fa-solid fa-truck-medical"></i></div><h3>Mobile &amp; Home-Based Physio</h3></div>
+        <p class="card-body">We deliver physiotherapy directly to the homes, hotels and premises of the people your organization is responsible for — for comfort and continuity of care.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-head"><div class="card-icon"><i class="fa-solid fa-chart-line"></i></div><h3>Outcome Reporting &amp; Analytics</h3></div>
+        <p class="card-body">You receive regular clinical and outcome reports — visibility into utilization, treatment progress and return-to-work or return-to-play metrics.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-head"><div class="card-icon"><i class="fa-solid fa-chalkboard-user"></i></div><h3>Training &amp; Capacity Building</h3></div>
+        <p class="card-body">We train your in-house staff on injury prevention, first-line rehabilitation and workplace health — building long-term capacity inside your organization.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW PARTNERSHIPS WORK ===== -->
+<section class="why">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker" style="color:#d7ec8f">How We Engage</span>
+      <h2>A Simple, Transparent Partnership Model</h2>
+      <p>From first enquiry to ongoing service delivery, we make it easy to bring physiotherapy into your organization.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <i class="fa-solid fa-comments"></i>
+        <h4>1. Discovery</h4>
+        <p>We listen to your needs — your people, your sites, your outcomes and your constraints.</p>
+      </div>
+      <div class="process-step reveal">
+        <i class="fa-solid fa-file-signature"></i>
+        <h4>2. Proposal</h4>
+        <p>You receive a tailored proposal: service scope, staffing model, pricing and outcome metrics.</p>
+      </div>
+      <div class="process-step reveal">
+        <i class="fa-solid fa-people-arrows"></i>
+        <h4>3. Mobilization</h4>
+        <p>We deploy our licensed physiotherapists, set up digital systems and integrate with your team.</p>
+      </div>
+      <div class="process-step reveal">
+        <i class="fa-solid fa-arrows-rotate"></i>
+        <h4>4. Delivery &amp; Review</h4>
+        <p>Ongoing service delivery, outcome reporting and quarterly review to keep improving.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY PARTNER WITH US ===== -->
+<section>
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker">Why Partner With Us</span>
+      <h2>The Physio Dynamic Difference</h2>
+      <p>Modern, evidence-based physiotherapy delivered with the accountability your organization expects.</p>
+    </div>
+    <div class="why-grid" style="grid-template-columns:repeat(4,1fr)">
+      <div class="why-item reveal" style="background:#fff;border-color:transparent">
+        <i class="fa-solid fa-head-side-virus" style="color:var(--teal)"></i>
+        <h3 style="color:var(--teal-dark)">Modern</h3>
+        <p style="color:var(--muted)">Innovative physiotherapy techniques, digital tools and modern equipment for faster recovery.</p>
+      </div>
+      <div class="why-item reveal" style="background:#fff;border-color:transparent">
+        <i class="fa-solid fa-shield-halved" style="color:var(--teal)"></i>
+        <h3 style="color:var(--teal-dark)">Accountable</h3>
+        <p style="color:var(--muted)">Clear SLAs, outcome reporting and a named clinical lead for your account.</p>
+      </div>
+      <div class="why-item reveal" style="background:#fff;border-color:transparent">
+        <i class="fa-solid fa-heart-pulse" style="color:var(--teal)"></i>
+        <h3 style="color:var(--teal-dark)">Vitality</h3>
+        <p style="color:var(--muted)">Healthier staff, faster return-to-work and stronger community outcomes.</p>
+      </div>
+      <div class="why-item reveal" style="background:#fff;border-color:transparent">
+        <i class="fa-solid fa-star" style="color:var(--teal)"></i>
+        <h3 style="color:var(--teal-dark)">Excellence</h3>
+        <p style="color:var(--muted)">Licensed specialists committed to the highest standards of clinical care and results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== APP DOWNLOAD SECTION ===== -->
 <section class="app-download" id="download-app">
   <div class="container app-grid">
     <div class="reveal">
       <span class="kicker">Physio Dynamic Africa App</span>
-      <h2>Take Your Recovery Everywhere</h2>
-      <p>Download our Android app and access your personalised exercise programme, video demonstrations, progress tracking, and direct messaging with your physiotherapist — all from your phone.</p>
+      <h2>A Digital Platform for Your Team</h2>
+      <p>Give your staff, members or patients access to their personalised rehabilitation programme through our Android app — with video demonstrations, progress tracking and secure messaging to their physiotherapist.</p>
       <ul class="app-features">
         <li><i class="fa-solid fa-circle-check"></i> Personalised exercise programmes with videos</li>
-        <li><i class="fa-solid fa-circle-check"></i> Smart reminders so you never miss a session</li>
-        <li><i class="fa-solid fa-circle-check"></i> Track your progress and adherence</li>
-        <li><i class="fa-solid fa-circle-check"></i> Message your physiotherapist directly</li>
-        <li><i class="fa-solid fa-circle-check"></i> Works offline — exercise anywhere</li>
+        <li><i class="fa-solid fa-circle-check"></i> Smart reminders to keep adherence high</li>
+        <li><i class="fa-solid fa-circle-check"></i> Progress tracking and outcome reporting</li>
+        <li><i class="fa-solid fa-circle-check"></i> Secure messaging with the clinical team</li>
+        <li><i class="fa-solid fa-circle-check"></i> Works offline — exercise from anywhere</li>
       </ul>
       <div class="app-actions">
         <a href="app-debug.apk" download class="btn btn-android" style="font-size:16px;padding:16px 32px">
           <i class="fa-brands fa-android" style="font-size:22px"></i> Download Android App
         </a>
-        <a href="contact.html" class="btn btn-outline"><i class="fa-solid fa-paper-plane"></i> Need Help?</a>
+        <a href="contact.html" class="btn btn-outline"><i class="fa-solid fa-paper-plane"></i> Discuss a Roll-Out</a>
       </div>
-      <p class="app-note"><i class="fa-solid fa-shield-halved"></i> Safe to install — you may need to enable "Install from unknown sources" in your phone settings.</p>
+      <p class="app-note"><i class="fa-solid fa-shield-halved"></i> Enterprise roll-out and white-labelling available for partners.</p>
     </div>
     <div class="app-phone reveal">
       <div class="screen">
@@ -344,41 +509,11 @@ footer a:hover{color:#d7ec8f}
   </div>
 </section>
 
-<section class="why">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="kicker" style="color:#d7ec8f">Why Choose Us</span>
-      <h2>The Physio Dynamic Difference</h2>
-    </div>
-    <div class="why-grid">
-      <div class="why-item reveal">
-        <i class="fa-solid fa-head-side-virus"></i>
-        <h3>Modern</h3>
-        <p>Innovative physiotherapy techniques &amp; modern equipment for faster recovery.</p>
-      </div>
-      <div class="why-item reveal">
-        <i class="fa-solid fa-shield-halved"></i>
-        <h3>Ownership</h3>
-        <p>We take ownership of your recovery journey, partnering with you every step.</p>
-      </div>
-      <div class="why-item reveal">
-        <i class="fa-solid fa-heart-pulse"></i>
-        <h3>Vitality</h3>
-        <p>Empowering active lifestyles and renewed energy for communities across Africa.</p>
-      </div>
-      <div class="why-item reveal">
-        <i class="fa-solid fa-star"></i>
-        <h3>Excellence</h3>
-        <p>Certified specialists committed to the highest standards of care &amp; results.</p>
-      </div>
-    </div>
-  </div>
-</section>
 <section class="cta-band">
   <div class="container reveal">
-    <h2>Let's Get Africa Moving</h2>
-    <p>Your recovery starts with one message. Our specialists are ready to help.</p>
-    <a href="contact.html" class="btn"><i class="fa-solid fa-paper-plane"></i> Get In Touch</a>
+    <h2>Let's Get Africa Moving — Together</h2>
+    <p>Partner with us to deliver physiotherapy and rehabilitation services your people can rely on.</p>
+    <a href="contact.html" class="btn"><i class="fa-solid fa-paper-plane"></i> Request a Partnership Proposal</a>
   </div>
 </section>
 
@@ -386,7 +521,7 @@ footer a:hover{color:#d7ec8f}
   <div class="container footer-grid">
     <div class="footer-brand">
       <img src="images/logo-dark.jpg" alt="Physio Dynamic Africa">
-      <p>Innovative, evidence-based and patient-centered physiotherapy — redefining physio in Africa.</p>
+      <p>Innovative, evidence-based and patient-centered physiotherapy — partnering with organizations across Africa.</p>
       <a href="app-debug.apk" download class="footer-app-btn"><i class="fa-brands fa-android" style="font-size:18px"></i> Download Android App</a>
     </div>
     <div>
@@ -402,13 +537,12 @@ footer a:hover{color:#d7ec8f}
     <div>
       <h4>Our Services</h4>
       <ul>
-        <li><i class="fa-solid fa-chevron-right"></i>Musculoskeletal &amp; Orthopedic Rehab</li>
-        <li><i class="fa-solid fa-chevron-right"></i>Post-Surgical Rehabilitation</li>
-        <li><i class="fa-solid fa-chevron-right"></i>Neurological Rehabilitation</li>
-        <li><i class="fa-solid fa-chevron-right"></i>Sports Performance</li>
+        <li><i class="fa-solid fa-chevron-right"></i>Corporate Wellness &amp; Ergonomics</li>
+        <li><i class="fa-solid fa-chevron-right"></i>Outsourced Physiotherapy</li>
+        <li><i class="fa-solid fa-chevron-right"></i>Clinical Rehabilitation Pathways</li>
         <li><i class="fa-solid fa-chevron-right"></i>Lymphatic Management</li>
         <li><i class="fa-solid fa-chevron-right"></i>Digital Rehabilitation</li>
-        <li><i class="fa-solid fa-chevron-right"></i>Home-Based &amp; Mobile Physio</li>
+        <li><i class="fa-solid fa-chevron-right"></i>Mobile &amp; Home-Based Physio</li>
       </ul>
     </div>
     <div>
@@ -424,7 +558,6 @@ footer a:hover{color:#d7ec8f}
   </div>
 </footer>
 
-<!-- Floating action buttons -->
 <a href="app-debug.apk" download class="float-android" aria-label="Download Android app"><i class="fa-brands fa-android"></i></a>
 <a href="mailto:info@physiodynamicafrica.com" class="float-call" aria-label="Email us"><i class="fa-solid fa-envelope"></i></a>
 
@@ -438,10 +571,6 @@ if(hamburger){
 }
 const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-const form=document.querySelector('#contact-form');
-if(form){
-  form.addEventListener('submit',e=>{e.preventDefault();const note=document.querySelector('.form-note');note.style.display='block';form.reset();setTimeout(()=>note.style.display='none',5000);});
-}
 
 </script>
 </body>
