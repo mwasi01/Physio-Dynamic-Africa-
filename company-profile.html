@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Profile | Physio Dynamic Africa</title>
+<meta name="description" content="Physio Dynamic Africa — Institutional physiotherapy partner. Company profile for corporates, hospitals, insurers, schools and sports organizations across Kenya, East Africa and the wider continent.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="icon" href="images/logo-vertical.jpg">
+<style>
+
+/* ===== Physio Dynamic Africa — Company Profile (Print-Ready A4) ===== */
+:root{
+  --teal:#0b5566; --teal-dark:#073d4a; --teal-light:#e3f0f3;
+  --lime:#a4c639; --lime-dark:#7f9c22; --lime-light:#f3f8e2;
+  --ink:#1e3238; --muted:#5a7078; --bg:#f5fafb; --white:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Poppins',sans-serif;
+  color:var(--ink);
+  background:#dde4e6;
+  line-height:1.5;
+  padding:96px 16px 40px;
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* === A4 Page Container === */
+.page{
+  width:210mm;
+  height:297mm;
+  min-height:297mm;
+  max-height:297mm;
+  margin:0 auto 24px auto;
+  background:#fff;
+  box-shadow:0 8px 30px rgba(7,61,74,.18);
+  position:relative;
+  overflow:hidden;
+  page-break-after:always;
+  break-after:page;
+}
+.page:last-child{page-break-after:auto;break-after:auto}
+.page-inner{
+  padding:16mm 16mm 14mm 16mm;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+}
+
+/* === COVER PAGE === */
+.cover{
+  background:linear-gradient(135deg,#052530 0%,#0b5566 55%,#4a6b14 130%);
+  color:#fff;
+  padding:0;
+  position:relative;
+}
+.cover::before{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:26px 26px;
+  pointer-events:none;
+}
+.cover-inner{
+  position:relative;
+  padding:18mm 16mm;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  z-index:1;
+}
+.cover-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-bottom:14px;
+  border-bottom:2px solid rgba(215,236,143,.4);
+}
+.cover-logo{
+  height:58px;
+  width:auto;
+  background:#fff;
+  padding:6px 14px;
+  border-radius:10px;
+  box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+.cover-top .year{
+  color:#d7ec8f;
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+}
+.cover-mid{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:30px 0;
+}
+.cover-mid .tag{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.25);
+  padding:8px 18px;border-radius:50px;
+  font-size:12px;font-weight:500;letter-spacing:1px;
+  margin-bottom:24px;width:fit-content;
+}
+.cover-mid .tag i{color:#d7ec8f;}
+.cover-mid h1{
+  font-size:50px;line-height:1.05;
+  font-weight:800;letter-spacing:-1.2px;
+  margin-bottom:20px;
+}
+.cover-mid h1 em{color:#d7ec8f;font-style:normal;}
+.cover-mid .sub{
+  font-size:17px;color:rgba(255,255,255,.88);
+  max-width:480px;line-height:1.5;margin-bottom:32px;
+}
+.cover-mid .motto-bar{
+  display:inline-flex;align-items:center;gap:12px;
+  background:#a4c639;color:#073d4a;
+  padding:13px 22px;border-radius:50px;
+  font-weight:700;font-size:14.5px;letter-spacing:.5px;
+  width:fit-content;
+  box-shadow:0 10px 30px rgba(164,198,57,.4);
+}
+.cover-bottom{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:20px;padding-top:20px;
+  border-top:2px solid rgba(215,236,143,.4);
+}
+.cover-bottom .item{display:flex;flex-direction:column;gap:4px;}
+.cover-bottom .item i{color:#d7ec8f;font-size:17px;margin-bottom:6px;}
+.cover-bottom .item strong{
+  font-size:10.5px;letter-spacing:1.5px;
+  text-transform:uppercase;color:#d7ec8f;font-weight:600;
+}
+.cover-bottom .item span{
+  font-size:12.5px;color:rgba(255,255,255,.9);
+  font-weight:400;word-break:break-word;
+}
+
+/* === SECTIONS === */
+.section{margin-bottom:22px;}
+.section:last-of-type{margin-bottom:0;}
+.section-head{
+  display:flex;align-items:baseline;gap:14px;
+  margin-bottom:16px;padding-bottom:10px;
+  border-bottom:2.5px solid var(--teal-light);
+}
+.section-num{
+  font-size:12px;font-weight:700;
+  color:var(--lime-dark);letter-spacing:2px;
+}
+.section-head h2{
+  font-size:21px;color:var(--teal-dark);
+  font-weight:700;letter-spacing:-.3px;
+}
+.section-head h2 em{color:var(--lime-dark);font-style:normal;}
+
+/* === RUNNING HEAD === */
+.run-head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-bottom:12px;margin-bottom:20px;
+  border-bottom:1px solid #e6eef0;
+}
+.run-head .brand-logo{
+  height:34px;
+  width:auto;
+}
+.run-head .page-num{
+  color:var(--teal-dark);font-weight:700;
+  font-size:11px;letter-spacing:1.6px;text-transform:uppercase;
+}
+
+/* === RUNNING FOOTER === */
+.run-foot{
+  margin-top:auto;padding-top:12px;
+  border-top:1px solid #e6eef0;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:10px;letter-spacing:1.2px;
+  text-transform:uppercase;color:var(--muted);
+}
+.run-foot .mark{color:var(--lime-dark);font-weight:700;}
+
+/* === TYPOGRAPHY === */
+.lead{font-size:14px;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+p.body{font-size:12.5px;color:var(--muted);line-height:1.65;margin-bottom:10px;}
+p.body:last-child{margin-bottom:0;}
+
+/* === Vision / Mission === */
+.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
+.vm-box{
+  background:linear-gradient(135deg,#0b5566,#128096);
+  color:#fff;border-radius:12px;padding:18px;
+  display:flex;flex-direction:column;gap:8px;
+}
+.vm-box .vm-icon{
+  width:38px;height:38px;border-radius:10px;
+  background:rgba(215,236,143,.2);
+  display:grid;place-items:center;
+  font-size:18px;color:#d7ec8f;
+}
+.vm-box h4{
+  font-size:11px;letter-spacing:1.5px;
+  text-transform:uppercase;color:#d7ec8f;font-weight:700;
+}
+.vm-box p{font-size:12.5px;line-height:1.5;color:#fff;}
+
+.values-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
+.value-item{
+  background:#f5fafb;border-left:4px solid var(--lime);
+  padding:14px 16px;border-radius:10px;
+}
+.value-item h5{
+  font-size:12.5px;color:var(--teal-dark);
+  font-weight:700;margin-bottom:3px;
+}
+.value-item p{font-size:11.5px;color:var(--muted);line-height:1.5;}
+
+/* === SERVICES GRID === */
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.svc-item{
+  background:#f5fafb;border-radius:12px;padding:14px;
+  display:flex;gap:12px;border:1px solid #e6eef0;
+}
+.svc-item .svc-icon{
+  width:38px;height:38px;border-radius:10px;
+  background:linear-gradient(135deg,var(--teal),#128096);
+  display:grid;place-items:center;
+  color:#fff;font-size:16px;flex-shrink:0;
+}
+.svc-item:nth-child(2n) .svc-icon{background:linear-gradient(135deg,var(--lime),#7f9c22)}
+.svc-item:nth-child(3n) .svc-icon{background:linear-gradient(135deg,#e8a13a,#c97f1b)}
+.svc-item:nth-child(4n) .svc-icon{background:linear-gradient(135deg,#8a5fc0,#6a3fa0)}
+.svc-item h5{
+  font-size:12px;color:var(--teal-dark);
+  font-weight:700;margin-bottom:3px;
+}
+.svc-item p{font-size:11px;color:var(--muted);line-height:1.45;}
+
+/* === PARTNERS GRID === */
+.partner-grid-print{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.partner-print{
+  display:flex;gap:12px;padding:14px;
+  background:#fff;border-radius:12px;
+  border:1px solid #e6eef0;
+  border-left:4px solid var(--teal);
+}
+.partner-print .picon{
+  width:38px;height:38px;border-radius:10px;
+  background:linear-gradient(135deg,var(--teal),#128096);
+  display:grid;place-items:center;
+  color:#fff;font-size:15px;flex-shrink:0;
+}
+.partner-print:nth-child(2n) .picon{background:linear-gradient(135deg,var(--lime),#7f9c22)}
+.partner-print:nth-child(3n) .picon{background:linear-gradient(135deg,#e8a13a,#c97f1b)}
+.partner-print:nth-child(4n) .picon{background:linear-gradient(135deg,#8a5fc0,#6a3fa0)}
+.partner-print h5{
+  font-size:12px;color:var(--teal-dark);
+  font-weight:700;margin-bottom:3px;
+}
+.partner-print p{font-size:11px;color:var(--muted);line-height:1.45;}
+
+/* === DELIVERY GRID === */
+.delivery-grid-print{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.delivery-box{
+  background:#fff;border-radius:12px;padding:16px;
+  border-top:5px solid var(--teal);
+  box-shadow:0 4px 14px rgba(7,61,74,.06);
+}
+.delivery-box:nth-child(2){border-top-color:var(--lime)}
+.delivery-box:nth-child(3){border-top-color:#e8a13a}
+.delivery-box:nth-child(4){border-top-color:#8a5fc0}
+.delivery-box .db-icon{
+  width:42px;height:42px;border-radius:12px;
+  background:linear-gradient(135deg,var(--teal),#128096);
+  display:grid;place-items:center;
+  color:#fff;font-size:18px;margin-bottom:10px;
+}
+.delivery-box:nth-child(2) .db-icon{background:linear-gradient(135deg,var(--lime),#7f9c22)}
+.delivery-box:nth-child(3) .db-icon{background:linear-gradient(135deg,#e8a13a,#c97f1b)}
+.delivery-box:nth-child(4) .db-icon{background:linear-gradient(135deg,#8a5fc0,#6a3fa0)}
+.delivery-box h5{
+  font-size:13px;color:var(--teal-dark);
+  font-weight:700;margin-bottom:6px;
+}
+.delivery-box p{font-size:11.5px;color:var(--muted);line-height:1.5;}
+
+/* === PILLARS === */
+.pillars-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.pillar{
+  padding:14px 16px;border-radius:12px;
+  background:linear-gradient(135deg,var(--teal-dark),var(--teal));
+  color:#fff;
+}
+.pillar:nth-child(2n){background:linear-gradient(135deg,#4a6b14,var(--lime-dark))}
+.pillar:nth-child(3n){background:linear-gradient(135deg,#a4640a,#c97f1b)}
+.pillar:nth-child(5){background:linear-gradient(135deg,#4b2a76,#6a3fa0)}
+.pillar .pi{
+  width:36px;height:36px;border-radius:10px;
+  background:rgba(255,255,255,.15);
+  display:grid;place-items:center;
+  font-size:16px;color:#d7ec8f;margin-bottom:10px;
+}
+.pillar h5{
+  font-size:12.5px;font-weight:700;
+  color:#fff;margin-bottom:5px;
+}
+.pillar p{font-size:11px;color:rgba(255,255,255,.85);line-height:1.5;}
+
+/* === PROCESS === */
+.process-print{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.step-p{
+  background:#f5fafb;border-radius:12px;
+  padding:16px 18px;
+  border-left:4px solid var(--lime);
+  position:relative;
+}
+.step-p .num{
+  position:absolute;top:12px;right:16px;
+  font-size:30px;font-weight:800;
+  color:var(--teal-light);line-height:1;
+}
+.step-p h5{
+  font-size:13px;color:var(--teal-dark);
+  font-weight:700;margin-bottom:5px;
+}
+.step-p p{font-size:11.5px;color:var(--muted);line-height:1.5;}
+
+/* === COVERAGE (delivery channels) === */
+.coverage-print{
+  background:linear-gradient(135deg,var(--teal-dark),var(--teal));
+  border-radius:14px;padding:22px;
+  color:#fff;position:relative;overflow:hidden;
+}
+.coverage-print::before{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:24px 24px;opacity:.6;
+  pointer-events:none;
+}
+.coverage-print > *{position:relative;z-index:1;}
+.coverage-print h3{
+  font-size:19px;font-weight:700;margin-bottom:6px;
+}
+.coverage-print .desc{
+  font-size:12px;color:rgba(255,255,255,.88);
+  margin-bottom:18px;max-width:600px;line-height:1.55;
+}
+.channels-print{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.chan-p{
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:12px;padding:14px;
+}
+.chan-p .ci{
+  width:36px;height:36px;border-radius:10px;
+  display:grid;place-items:center;
+  font-size:16px;color:#fff;margin-bottom:10px;
+  background:linear-gradient(135deg,var(--lime),#7f9c22);
+}
+.chan-p:nth-child(2) .ci{background:linear-gradient(135deg,#128096,var(--teal))}
+.chan-p:nth-child(3) .ci{background:linear-gradient(135deg,#e8a13a,#c97f1b)}
+.chan-p h6{
+  font-size:12.5px;font-weight:700;
+  color:#fff;margin-bottom:4px;
+}
+.chan-p small{
+  display:block;font-size:9.5px;letter-spacing:1px;
+  text-transform:uppercase;color:#d7ec8f;
+  font-weight:600;margin-bottom:6px;
+}
+.chan-p p{font-size:10.5px;color:rgba(255,255,255,.88);line-height:1.45;}
+
+/* === WHY === */
+.why-print{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.why-p{
+  padding:16px;border-radius:12px;
+  background:#fff;border:1px solid #e6eef0;
+}
+.why-p i{
+  font-size:20px;color:var(--lime-dark);
+  margin-bottom:8px;display:block;
+}
+.why-p h5{
+  font-size:12.5px;color:var(--teal-dark);
+  font-weight:700;margin-bottom:4px;
+}
+.why-p p{font-size:11.5px;color:var(--muted);line-height:1.5;}
+
+/* === CONTACT === */
+.contact-print{display:flex;flex-direction:column;gap:14px;margin-top:6px;}
+.contact-row{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:16px 18px;background:#f5fafb;
+  border-radius:12px;border-left:5px solid var(--teal);
+}
+.contact-row i{
+  width:42px;height:42px;border-radius:10px;
+  background:var(--teal);color:#fff;
+  display:grid;place-items:center;
+  font-size:18px;flex-shrink:0;
+}
+.contact-row h5{
+  font-size:11px;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--lime-dark);
+  font-weight:700;margin-bottom:4px;
+}
+.contact-row p{
+  font-size:13px;color:var(--ink);
+  font-weight:500;word-break:break-word;
+}
+.contact-row small{
+  display:block;font-size:11px;
+  color:var(--muted);font-weight:400;margin-top:2px;
+}
+
+/* === CLOSING === */
+.closing{
+  margin-top:auto;
+  background:linear-gradient(135deg,var(--teal-dark),var(--teal));
+  border-radius:14px;padding:26px 22px;
+  color:#fff;text-align:center;
+  position:relative;overflow:hidden;
+}
+.closing::before{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:24px 24px;opacity:.5;
+  pointer-events:none;
+}
+.closing > *{position:relative;z-index:1;}
+.closing h3{
+  font-size:20px;font-weight:700;margin-bottom:8px;
+}
+.closing p{
+  font-size:12.5px;color:rgba(255,255,255,.88);
+  margin-bottom:16px;line-height:1.55;
+}
+.closing .btn-print{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 24px;background:#a4c639;
+  color:#073d4a;border-radius:50px;
+  font-weight:700;font-size:13px;
+}
+
+/* === TABLE === */
+table.tbl{
+  width:100%;border-collapse:collapse;font-size:11.5px;
+}
+table.tbl th{
+  text-align:left;padding:10px 12px;
+  background:var(--teal-dark);color:#fff;
+  font-weight:600;font-size:10.5px;
+  letter-spacing:1px;text-transform:uppercase;
+}
+table.tbl td{
+  padding:10px 12px;
+  border-bottom:1px solid #e6eef0;
+  color:var(--muted);vertical-align:top;
+}
+table.tbl tr:nth-child(even) td{background:#f9fcfd}
+table.tbl td strong{color:var(--teal-dark)}
+
+/* === STICKY TOP ACTION BAR (screen only) === */
+.action-bar{
+  position:fixed;
+  top:0;left:0;right:0;
+  background:linear-gradient(90deg,var(--teal-dark),var(--teal));
+  color:#fff;
+  padding:12px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;
+  z-index:200;
+  box-shadow:0 4px 20px rgba(7,61,74,.25);
+}
+.action-bar-left{
+  display:flex;align-items:center;gap:12px;
+  font-size:14px;font-weight:500;
+}
+.action-bar-left i{font-size:20px;color:#d7ec8f;}
+.action-bar-left strong{color:#fff;font-weight:700;}
+.action-bar-left span{color:rgba(255,255,255,.8);font-weight:400;}
+.action-bar-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#a4c639;color:#073d4a;
+  border:none;padding:11px 22px;
+  border-radius:50px;font-family:inherit;
+  font-weight:700;font-size:14.5px;
+  cursor:pointer;transition:.3s;
+  box-shadow:0 8px 20px rgba(164,198,57,.4);
+  white-space:nowrap;
+}
+.action-bar-cta:hover{background:#c0e05c;transform:translateY(-2px);}
+.action-bar-cta i{font-size:16px;}
+.action-bar-tip{
+  display:flex;align-items:center;gap:8px;
+  font-size:12.5px;color:rgba(255,255,255,.7);
+  padding-left:12px;border-left:1px solid rgba(255,255,255,.2);
+}
+.action-bar-tip kbd{
+  background:rgba(255,255,255,.15);
+  padding:2px 8px;border-radius:5px;
+  font-family:monospace;font-size:11.5px;
+  color:#d7ec8f;font-weight:600;
+}
+
+/* === FLOATING FALLBACK (mobile) === */
+.print-fab{
+  position:fixed;bottom:20px;right:20px;
+  background:var(--lime);color:#fff;
+  border:none;padding:14px 22px;
+  border-radius:50px;font-family:inherit;
+  font-weight:700;font-size:14.5px;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(127,156,34,.5);
+  display:none;align-items:center;gap:10px;
+  z-index:200;transition:.3s;
+}
+.print-fab:hover{background:var(--lime-dark);transform:translateY(-2px);}
+
+/* ===== PRINT RULES ===== */
+@page{
+  size:A4;
+  margin:0;
+}
+@media print{
+  html,body{
+    background:#fff !important;
+    padding:0 !important;
+    margin:0 !important;
+  }
+  .action-bar,
+  .print-fab{
+    display:none !important;
+  }
+  .page{
+    width:210mm !important;
+    height:297mm !important;
+    min-height:297mm !important;
+    max-height:297mm !important;
+    margin:0 !important;
+    box-shadow:none !important;
+    page-break-after:always;
+    break-after:page;
+    overflow:hidden;
+  }
+  .page:last-child{
+    page-break-after:auto;
+    break-after:auto;
+  }
+  .page-inner{padding:14mm 14mm 12mm 14mm !important;}
+  .cover-inner{padding:14mm 14mm !important;}
+}
+
+@media (max-width:800px){
+  body{padding:80px 10px 30px;}
+  .page{width:100%;height:auto;min-height:auto;max-height:none;}
+  .page-inner{padding:28px 20px !important;}
+  .cover-inner{padding:28px 20px !important;}
+  .cover-mid h1{font-size:34px;}
+  .cover-bottom,.channels-print{grid-template-columns:1fr;}
+  .vm-grid,.values-grid,.svc-grid,.partner-grid-print,
+  .delivery-grid-print,.pillars-grid,.process-print,.why-print{grid-template-columns:1fr;}
+  .action-bar{padding:10px 14px;gap:10px;}
+  .action-bar-left span,.action-bar-tip{display:none;}
+  .action-bar-left strong{font-size:13px;}
+  .action-bar-cta{padding:9px 16px;font-size:13px;}
+  .action-bar-cta span{display:none;}
+  .print-fab{display:inline-flex !important;}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============ STICKY ACTION BAR ============ -->
+<div class="action-bar">
+  <div class="action-bar-left">
+    <i class="fa-solid fa-file-pdf"></i>
+    <strong>Company Profile</strong>
+    <span>— 7-page branded PDF, ready to share</span>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:16px">
+    <div class="action-bar-tip">
+      Tip: press <kbd>Ctrl</kbd> + <kbd>P</kbd>
+    </div>
+    <button class="action-bar-cta" onclick="window.print()">
+      <i class="fa-solid fa-download"></i>
+      <span>Save as PDF</span>
+    </button>
+  </div>
+</div>
+
+<!-- ============ PAGE 1 — COVER ============ -->
+<section class="page cover">
+  <div class="cover-inner">
+    <div class="cover-top">
+      <img src="images/logo-horizontal.jpg" alt="Physio Dynamic Africa" class="cover-logo">
+      <span class="year">2026</span>
+    </div>
+
+    <div class="cover-mid">
+      <span class="tag"><i class="fa-solid fa-handshake"></i> Company Profile &middot; Institutional Partnerships</span>
+      <h1>Redefining <em>Physio</em><br>in Africa.</h1>
+      <p class="sub">An institutional physiotherapy partner — delivering rehabilitation services to organizations across Kenya, East Africa and the wider continent.</p>
+      <div class="motto-bar">
+        <i class="fa-solid fa-person-running"></i>
+        Let's Get Africa Moving
+      </div>
+    </div>
+
+    <div class="cover-bottom">
+      <div class="item">
+        <i class="fa-solid fa-envelope"></i>
+        <strong>Email</strong>
+        <span>info@physiodynamicafrica.com</span>
+      </div>
+      <div class="item">
+        <i class="fa-solid fa-globe"></i>
+        <strong>Coverage</strong>
+        <span>Kenya · East Africa · Beyond</span>
+      </div>
+      <div class="item">
+        <i class="fa-solid fa-globe"></i>
+        <strong>Website</strong>
+        <span>physiodynamicafrica.com</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAGE 2 — ABOUT US ============ -->
+<section class="page">
+  <div class="page-inner">
+    <div class="run-head">
+      <img src="images/logo-horizontal.jpg" alt="Physio Dynamic Africa" class="brand-logo">
+      <span class="page-num">02</span>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <h2>About <em>Us</em></h2>
+      </div>
+      <p class="lead">Physio Dynamic Africa is a modern, innovative physiotherapy company delivering services across Kenya, East Africa and the wider continent. We work with organizations — not just individuals — to design, deliver and manage physiotherapy and rehabilitation services for the people they are responsible for.</p>
+      <p class="body">Our partners include corporates, hospitals, insurers and HMOs, schools and universities, sports organizations, NGOs, and expatriate and diplomatic missions. We embed licensed physiotherapists into their operations, deploy digital rehabilitation at scale, and take clinical accountability for outcomes — wherever our partners operate.</p>
+      <p class="body">Founded on clinical excellence, we blend evidence-based physiotherapy with technology-driven solutions — restoring mobility, preventing injury, and building long-term health capacity inside the organizations we serve.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2>Vision <em>&amp;</em> Mission</h2>
+      </div>
+      <div class="vm-grid">
+        <div class="vm-box">
+          <div class="vm-icon"><i class="fa-solid fa-bullseye"></i></div>
+          <h4>Our Vision</h4>
+          <p>To be Africa's leading institutional partner for transformative physiotherapy.</p>
+        </div>
+        <div class="vm-box">
+          <div class="vm-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+          <h4>Our Mission</h4>
+          <p>To deliver innovative, evidence-based and accountable physiotherapy services to organizations across Africa.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <h2>Our <em>Values</em></h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-item">
+          <h5>Modern</h5>
+          <p>Innovative techniques, digital rehabilitation and modern equipment deployed inside your operations.</p>
+        </div>
+        <div class="value-item">
+          <h5>Accountable</h5>
+          <p>Clear SLAs, named clinical leads and outcome reporting — you always know what you're getting.</p>
+        </div>
+        <div class="value-item">
+          <h5>Vitality</h5>
+          <p>Healthier staff, faster return-to-work and stronger community outcomes — measured, not assumed.</p>
+        </div>
+        <div class="value-item">
+          <h5>Excellence</h5>
+          <p>Licensed specialists committed to the highest standards of clinical care and results.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="run-foot">
+      <span>Company Profile &middot; 2026</span>
+      <span class="mark">Let's Get Africa Moving</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAGE 3 — OUR SERVICES ============ -->
+<section class="page">
+  <div class="page-inner">
+    <div class="run-head">
+      <img src="images/logo-horizontal.jpg" alt="Physio Dynamic Africa" class="brand-logo">
+      <span class="page-num">03</span>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <h2>Our <em>Services</em></h2>
+      </div>
+      <p class="body" style="margin-bottom:18px">Every partnership is designed around your operations, your people and your outcomes. We deliver physiotherapy across eight core service lines.</p>
+
+      <div class="svc-grid">
+        <div class="svc-item">
+          <div class="svc-icon"><i class="fa-solid fa-briefcase-medical"></i></div>
+          <div>
+            <h5>Corporate Wellness &amp; Ergonomics</h5>
+            <p>On-site workplace assessments, ergonomic solutions, injury prevention workshops and staff rehabilitation.</p>
+          </div>
+        </div>
+        <div class="svc-item">
+          <div class="svc-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+          <div>
+            <h5>Outsourced Physiotherapy</h5>
+            <p>Embedded licensed physiotherapists working inside your facility, on your schedule.</p>
+          </div>
+        </div>
+        <div class="svc-item">
+          <div class="svc-icon"><i class="fa-solid fa-notes-medical"></i></div>
+          <div>
+            <h5>Clinical Rehabilitation Pathways</h5>
+            <p>Standardised protocols for orthopaedic, neurological and post-surgical cases for insurers and hospitals.</p>
+          </div>
+        </div>
+        <div class="svc-item">
+          <div class="svc-icon"><i class="fa-solid fa-laptop-medical"></i></div>
+          <div>
+            <h5>Digital Rehabilitation</h5>
+            <p>Robotic, VR/AR, smart-device and telerehabilitation programmes at scale across your network.</p>
+          </div>
+        </div>
+        <div class="svc-item">
+          <div class="svc-icon"><i class="fa-solid fa-hand-holding-droplet"></i></div>
+          <div>
+            <h5>Lymphatic Management</h5>
+            <p>MLD, complete decongestive therapy and lymphoedema management for specialist caseloads.</p>
+          </div>
+        </div>
+        <div class="svc-item">
+          <div class="svc-icon"><i class="fa-solid fa-truck-medical"></i></div>
+          <div>
+            <h5>Mobile &amp; Home-Based Physio</h5>
+            <p>Physiotherapy delivered to homes, hotels, and premises for staff, members or patients.</p>
+          </div>
+        </div>
+        <div class="svc-item">
+          <div class="svc-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div>
+            <h5>Outcome Reporting</h5>
+            <p>Regular clinical and outcome reports showing utilization, progress and return-to-work metrics.</p>
+          </div>
+        </div>
+        <div class="svc-item">
+          <div class="svc-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+          <div>
+            <h5>Training &amp; Capacity Building</h5>
+            <p>Workshops and training for your in-house teams — building long-term capacity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">05</span>
+        <h2>Clinical <em>Capabilities</em></h2>
+      </div>
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>Clinical Area</th>
+            <th>Focus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Musculoskeletal &amp; Orthopedic</strong></td><td>Back pain, arthritis, joint injuries, post-fracture recovery, chronic pain</td></tr>
+          <tr><td><strong>Post-Surgical Rehabilitation</strong></td><td>Joint replacements, ligament repairs, spinal surgery, post-operative recovery</td></tr>
+          <tr><td><strong>Neurological Rehabilitation</strong></td><td>Stroke, Parkinson's, MS, and other neurological conditions</td></tr>
+          <tr><td><strong>Sports Performance</strong></td><td>Conditioning, injury prevention, return-to-sport testing</td></tr>
+          <tr><td><strong>Lymphatic Management</strong></td><td>MLD, CDT, lymphoedema, post-surgical lymphatic care</td></tr>
+          <tr><td><strong>Digital Rehabilitation</strong></td><td>Robotic, VR/AR, smart-device, telerehab at scale</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="run-foot">
+      <span>Company Profile &middot; 2026</span>
+      <span class="mark">Let's Get Africa Moving</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAGE 4 — WHO WE PARTNER WITH ============ -->
+<section class="page">
+  <div class="page-inner">
+    <div class="run-head">
+      <img src="images/logo-horizontal.jpg" alt="Physio Dynamic Africa" class="brand-logo">
+      <span class="page-num">04</span>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">06</span>
+        <h2>Who We <em>Partner With</em></h2>
+      </div>
+      <p class="body" style="margin-bottom:18px">We build physiotherapy capacity inside the organizations that care for people. Our partnerships span eight key sectors.</p>
+
+      <div class="partner-grid-print">
+        <div class="partner-print">
+          <div class="picon"><i class="fa-solid fa-building"></i></div>
+          <div>
+            <h5>Corporates &amp; Employers</h5>
+            <p>Staff wellness, ergonomics, injury prevention and return-to-work rehabilitation.</p>
+          </div>
+        </div>
+        <div class="partner-print">
+          <div class="picon"><i class="fa-solid fa-hospital"></i></div>
+          <div>
+            <h5>Hospitals &amp; Clinics</h5>
+            <p>Outsourced physiotherapy departments and specialist clinical cover.</p>
+          </div>
+        </div>
+        <div class="partner-print">
+          <div class="picon"><i class="fa-solid fa-shield-heart"></i></div>
+          <div>
+            <h5>Insurers &amp; HMOs</h5>
+            <p>Provider networks, clinical pathways and outcome-based case management.</p>
+          </div>
+        </div>
+        <div class="partner-print">
+          <div class="picon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div>
+            <h5>Schools &amp; Universities</h5>
+            <p>Student athlete care, posture programmes and on-campus rehabilitation.</p>
+          </div>
+        </div>
+        <div class="partner-print">
+          <div class="picon"><i class="fa-solid fa-futbol"></i></div>
+          <div>
+            <h5>Sports Organizations</h5>
+            <p>Team physiotherapy, screening, injury prevention and return-to-play.</p>
+          </div>
+        </div>
+        <div class="partner-print">
+          <div class="picon"><i class="fa-solid fa-people-group"></i></div>
+          <div>
+            <h5>NGOs &amp; Community</h5>
+            <p>Community rehabilitation outreach, disability inclusion and mobile clinics.</p>
+          </div>
+        </div>
+        <div class="partner-print">
+          <div class="picon"><i class="fa-solid fa-hotel"></i></div>
+          <div>
+            <h5>Hospitality &amp; Wellness</h5>
+            <p>Guest wellness programmes and physiotherapy for resorts and spas.</p>
+          </div>
+        </div>
+        <div class="partner-print">
+          <div class="picon"><i class="fa-solid fa-plane-departure"></i></div>
+          <div>
+            <h5>Expat &amp; Relocation</h5>
+            <p>Rehabilitation support for expatriates, missions and international organizations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="run-foot">
+      <span>Company Profile &middot; 2026</span>
+      <span class="mark">Let's Get Africa Moving</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAGE 5 — DELIVERY & DIGITAL ============ -->
+<section class="page">
+  <div class="page-inner">
+    <div class="run-head">
+      <img src="images/logo-horizontal.jpg" alt="Physio Dynamic Africa" class="brand-logo">
+      <span class="page-num">05</span>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">07</span>
+        <h2>Our <em>Delivery Models</em></h2>
+      </div>
+      <p class="body" style="margin-bottom:16px">Every partnership is delivered through one or more of these channels — chosen to fit your operations and your people.</p>
+
+      <div class="delivery-grid-print">
+        <div class="delivery-box">
+          <div class="db-icon"><i class="fa-solid fa-hospital"></i></div>
+          <h5>On-Site Delivery</h5>
+          <p>Our physiotherapists work inside your facility, on a fixed weekly schedule, with our own equipment and protocols.</p>
+        </div>
+        <div class="delivery-box">
+          <div class="db-icon"><i class="fa-solid fa-people-arrows"></i></div>
+          <h5>Outsourced Department</h5>
+          <p>We run your physiotherapy department on your behalf — staffing, rota, protocols, equipment and audit.</p>
+        </div>
+        <div class="delivery-box">
+          <div class="db-icon"><i class="fa-solid fa-laptop-medical"></i></div>
+          <h5>Digital &amp; Remote</h5>
+          <p>Telerehabilitation, digital exercise programmes and remote monitoring for distributed teams and patients.</p>
+        </div>
+        <div class="delivery-box">
+          <div class="db-icon"><i class="fa-solid fa-truck-medical"></i></div>
+          <h5>Mobile &amp; Home Visits</h5>
+          <p>We travel to your people — at home, in hotels, at work, or in the field.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">08</span>
+        <h2>Digital <em>Rehabilitation</em></h2>
+      </div>
+      <p class="body" style="margin-bottom:14px">Five digital rehabilitation capabilities — deployable at scale across your organization.</p>
+      <div class="pillars-grid">
+        <div class="pillar">
+          <div class="pi"><i class="fa-solid fa-robot"></i></div>
+          <h5>Robotic Treatment</h5>
+          <p>High-intensity, precise, repetitive movement training for neuro and orthopaedic recovery.</p>
+        </div>
+        <div class="pillar">
+          <div class="pi"><i class="fa-solid fa-vr-cardboard"></i></div>
+          <h5>Virtual Reality</h5>
+          <p>Immersive environments that turn exercise into engaging, motivating sessions.</p>
+        </div>
+        <div class="pillar">
+          <div class="pi"><i class="fa-solid fa-glasses"></i></div>
+          <h5>Augmented Reality</h5>
+          <p>Digital guidance overlaid on the real world for guided, correct execution.</p>
+        </div>
+        <div class="pillar">
+          <div class="pi"><i class="fa-solid fa-microchip"></i></div>
+          <h5>Smart Devices</h5>
+          <p>Wearables that track movement quality, range and progress objectively.</p>
+        </div>
+        <div class="pillar">
+          <div class="pi"><i class="fa-solid fa-laptop-medical"></i></div>
+          <h5>Telerehabilitation</h5>
+          <p>Expert physiotherapy via secure video — wherever your people are based.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="run-foot">
+      <span>Company Profile &middot; 2026</span>
+      <span class="mark">Let's Get Africa Moving</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAGE 6 — PROCESS, WHY, COVERAGE ============ -->
+<section class="page">
+  <div class="page-inner">
+    <div class="run-head">
+      <img src="images/logo-horizontal.jpg" alt="Physio Dynamic Africa" class="brand-logo">
+      <span class="page-num">06</span>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">09</span>
+        <h2>How We <em>Engage</em></h2>
+      </div>
+      <div class="process-print">
+        <div class="step-p">
+          <span class="num">01</span>
+          <h5>Discovery</h5>
+          <p>We listen to your needs — your people, sites, outcomes and constraints.</p>
+        </div>
+        <div class="step-p">
+          <span class="num">02</span>
+          <h5>Proposal</h5>
+          <p>You receive a tailored proposal: scope, staffing model, pricing and outcome metrics.</p>
+        </div>
+        <div class="step-p">
+          <span class="num">03</span>
+          <h5>Mobilization</h5>
+          <p>We deploy licensed physiotherapists, set up digital systems and integrate with your team.</p>
+        </div>
+        <div class="step-p">
+          <span class="num">04</span>
+          <h5>Delivery &amp; Review</h5>
+          <p>Ongoing service delivery, outcome reporting and quarterly review to keep improving.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">10</span>
+        <h2>Why <em>Partner</em> With Us</h2>
+      </div>
+      <div class="why-print">
+        <div class="why-p">
+          <i class="fa-solid fa-people-arrows"></i>
+          <h5>Embedded Delivery</h5>
+          <p>Our physiotherapists work inside your facility — not as distant consultants.</p>
+        </div>
+        <div class="why-p">
+          <i class="fa-solid fa-scale-balanced"></i>
+          <h5>Flexible Engagement</h5>
+          <p>On-site, outsourced, digital or mobile — shaped around your operational reality.</p>
+        </div>
+        <div class="why-p">
+          <i class="fa-solid fa-chart-simple"></i>
+          <h5>Measurable Outcomes</h5>
+          <p>Utilization, adherence, return-to-work and clinical outcomes you can act on.</p>
+        </div>
+        <div class="why-p">
+          <i class="fa-solid fa-user-shield"></i>
+          <h5>Governance &amp; Compliance</h5>
+          <p>Registered clinicians, documented protocols, data protection, indemnity cover.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">11</span>
+        <h2>Our <em>Coverage</em></h2>
+      </div>
+      <div class="coverage-print">
+        <h3>Delivered Across Kenya, East Africa and Beyond</h3>
+        <p class="desc">We operate through a distributed continental delivery model built on three integrated channels — reaching any partner, any team or any patient, wherever they are located.</p>
+
+        <div class="channels-print">
+          <div class="chan-p">
+            <div class="ci"><i class="fa-solid fa-hospital"></i></div>
+            <h6>On-Site Deployment</h6>
+            <small>Into Your Facility</small>
+            <p>Licensed physiotherapists embedded directly into partner facilities.</p>
+          </div>
+          <div class="chan-p">
+            <div class="ci"><i class="fa-solid fa-truck-medical"></i></div>
+            <h6>Mobile &amp; Field</h6>
+            <small>Wherever Your People Are</small>
+            <p>Teams mobilized to homes, hotels, workplaces and field locations.</p>
+          </div>
+          <div class="chan-p">
+            <div class="ci"><i class="fa-solid fa-laptop-medical"></i></div>
+            <h6>Digital &amp; Telerehab</h6>
+            <small>Anywhere with Internet</small>
+            <p>Physiotherapy delivered remotely at continental scale.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="run-foot">
+      <span>Company Profile &middot; 2026</span>
+      <span class="mark">Let's Get Africa Moving</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAGE 7 — CONTACT ============ -->
+<section class="page">
+  <div class="page-inner">
+    <div class="run-head">
+      <img src="images/logo-horizontal.jpg" alt="Physio Dynamic Africa" class="brand-logo">
+      <span class="page-num">07</span>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">12</span>
+        <h2>Get In <em>Touch</em></h2>
+      </div>
+      <p class="body" style="margin-bottom:20px">To discuss a partnership, request a proposal, or book a discovery call — reach us through any of the channels below. We respond within one business day.</p>
+
+      <div class="contact-print">
+        <div class="contact-row">
+          <i class="fa-solid fa-envelope"></i>
+          <div>
+            <h5>Email</h5>
+            <p>info@physiodynamicafrica.com</p>
+            <small>For proposals, discovery calls, partnership decks and general enquiries.</small>
+          </div>
+        </div>
+        <div class="contact-row">
+          <i class="fa-solid fa-globe"></i>
+          <div>
+            <h5>Coverage</h5>
+            <p>Kenya · East Africa · Beyond</p>
+            <small>On-site teams, mobile service and digital delivery across the region and beyond.</small>
+          </div>
+        </div>
+        <div class="contact-row">
+          <i class="fa-solid fa-globe"></i>
+          <div>
+            <h5>Website</h5>
+            <p>physiodynamicafrica.com</p>
+            <small>Visit our site for full service and partnership details.</small>
+          </div>
+        </div>
+        <div class="contact-row">
+          <i class="fa-solid fa-clock"></i>
+          <div>
+            <h5>Response Time</h5>
+            <p>Within one business day</p>
+            <small>Monday to Friday, East Africa Time (EAT).</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="closing">
+      <h3>Let's Build Your Physiotherapy Partnership</h3>
+      <p>Tell us about your organization and we'll design the service model that fits — from on-site to digital, from a single site to continental coverage.</p>
+      <div class="btn-print">
+        <i class="fa-solid fa-paper-plane"></i>
+        info@physiodynamicafrica.com
+      </div>
+    </div>
+
+    <div class="run-foot">
+      <span>© 2026 Physio Dynamic Africa &middot; All rights reserved</span>
+      <span class="mark">Let's Get Africa Moving</span>
+    </div>
+  </div>
+</section>
+
+<!-- Mobile floating fallback -->
+<button class="print-fab" onclick="window.print()">
+  <i class="fa-solid fa-file-pdf"></i> Save as PDF
+</button>
+
+<script>
+  function togglePrintFab(){
+    const fab = document.querySelector('.print-fab');
+    if(!fab) return;
+    if(window.innerWidth <= 800){
+      fab.style.display = 'inline-flex';
+    } else {
+      fab.style.display = 'none';
+    }
+  }
+  window.addEventListener('resize', togglePrintFab);
+  togglePrintFab();
+</script>
+
+</body>
+</html>
