@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Digital Programmes for Partners | Physio Dynamic Africa</title>
-<meta name="description" content="Digital rehabilitation programmes for institutions — corporate wellness, telerehabilitation, robotic, VR, AR and smart-device programmes delivered by Physio Dynamic Africa across Mombasa and Nairobi.">
+<meta name="description" content="Digital rehabilitation programmes for institutions — corporate wellness, telerehabilitation, robotic, VR, AR and smart-device programmes delivered by Physio Dynamic Africa across Kenya, East Africa and the wider continent.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -155,8 +155,9 @@ header{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 2px 14px r
   inset: 0;
   background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
   background-size: 28px 28px;
+  pointer-events:none;
 }
-.digital-section .container { position: relative; }
+.digital-section .container { position: relative; z-index:1; }
 .digital-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 12px; }
 .digital-card {
   background: rgba(255,255,255,.07);
@@ -195,28 +196,10 @@ header{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 2px 14px r
 .digital-section .kicker { color: #d7ec8f; font-weight: 600; text-transform: uppercase; letter-spacing: 2.5px; font-size: 13px; }
 .digital-section h2 { font-size: clamp(30px, 4vw, 42px); color: #fff; margin: 8px 0 12px; font-weight: 700; }
 
-/* ===== CTA options ===== */
-.cta-options{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
-  max-width:1000px;margin:0 auto;
-}
-.cta-option{
-  background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
-  padding:28px 20px;text-align:center;transition:.3s;
-  border-bottom:4px solid var(--lime);
-  display:flex;flex-direction:column;align-items:center;gap:12px;
-}
-.cta-option:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(7,61,74,.15)}
-.cta-option i{font-size:28px;color:var(--teal)}
-.cta-option h4{font-size:15px;color:var(--teal-dark)}
-.cta-option p{font-size:13px;color:var(--muted);flex:1}
-.cta-option .btn{font-size:13px;padding:10px 20px}
-
 /* ===== Lymphatic section ===== */
 .lymph-section {
   background: linear-gradient(135deg, #f0f9fb 0%, #e1f0f5 100%);
-  border-radius: var(--radius);
-  padding: 52px 0;
+  padding: 72px 0;
 }
 .lymph-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: center; }
 .lymph-list { list-style: none; margin-top: 18px; }
@@ -247,23 +230,90 @@ header{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 2px 14px r
 }
 .lymph-highlight ul li i { color: var(--lime-dark); font-size: 14px; width: 20px; }
 
-/* Contact */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-.contact-info{display:flex;flex-direction:column;gap:18px}
-.info-item{display:flex;gap:16px;background:#fff;padding:20px 22px;border-radius:14px;box-shadow:var(--shadow);align-items:flex-start}
-.info-item i{width:46px;height:46px;border-radius:50%;background:var(--teal-light);color:var(--teal);display:grid;place-items:center;font-size:18px;flex-shrink:0}
-.info-item h4{color:var(--teal-dark);font-size:15px;margin-bottom:2px}
-.info-item p{color:var(--muted);font-size:14.5px}
-.form-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:36px}
-.form-card h3{font-size:24px;color:var(--teal-dark);margin-bottom:20px;font-weight:700}
-.field{margin-bottom:16px}
-.field label{display:block;font-size:13.5px;font-weight:500;margin-bottom:6px;color:var(--ink)}
-.field input,.field select,.field textarea{width:100%;padding:13px 16px;border:1.5px solid #d8e6ea;border-radius:10px;font-family:inherit;font-size:14.5px;background:var(--bg);transition:.3s}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--lime);background:#fff}
-.field textarea{resize:vertical;min-height:120px}
-.form-note{display:none;margin-top:14px;background:var(--lime-light);border:1px solid var(--lime);color:var(--lime-dark);padding:12px 16px;border-radius:10px;font-size:14px}
-.map-wrap{margin-top:48px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
-.map-wrap iframe{width:100%;height:380px;border:0;display:block}
+/* ===== Coverage panel (delivery channels) ===== */
+.coverage-panel{
+  background:linear-gradient(135deg,var(--teal-dark),var(--teal));
+  border-radius:24px;
+  padding:56px 40px;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.coverage-panel::before{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:26px 26px;opacity:.7;
+  pointer-events:none;
+}
+.coverage-panel .cov-inner{position:relative;z-index:1}
+.coverage-panel .cov-kicker{
+  color:#d7ec8f;font-weight:600;text-transform:uppercase;
+  letter-spacing:2.5px;font-size:13px;display:block;margin-bottom:10px;
+}
+.coverage-panel h3{
+  font-size:clamp(24px,3.4vw,34px);color:#fff;
+  margin-bottom:14px;font-weight:700;
+}
+.coverage-panel .cov-desc{
+  color:rgba(255,255,255,.88);font-size:16px;
+  max-width:760px;margin-bottom:36px;line-height:1.6;
+}
+.channels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.channel-card{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:var(--radius);
+  padding:28px 24px;
+  transition:.35s;
+}
+.channel-card:hover{
+  background:rgba(255,255,255,.14);
+  transform:translateY(-6px);
+  border-color:rgba(215,236,143,.4);
+}
+.channel-icon{
+  width:54px;height:54px;border-radius:14px;
+  display:grid;place-items:center;font-size:24px;color:#fff;
+  margin-bottom:16px;
+  background:linear-gradient(135deg,var(--lime),#7f9c22);
+}
+.channel-card:nth-child(2) .channel-icon{background:linear-gradient(135deg,#128096,var(--teal))}
+.channel-card:nth-child(3) .channel-icon{background:linear-gradient(135deg,#e8a13a,#c97f1b)}
+.channel-card h4{font-size:18px;color:#fff;margin-bottom:8px;font-weight:700}
+.channel-card .channel-tag{
+  display:inline-block;font-size:10.5px;font-weight:600;
+  letter-spacing:1px;text-transform:uppercase;
+  color:#d7ec8f;margin-bottom:12px;
+}
+.channel-card p{font-size:13.5px;color:rgba(255,255,255,.88);line-height:1.6}
+.coverage-note{
+  margin-top:32px;
+  padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.18);
+  font-size:15px;
+  color:rgba(255,255,255,.92);
+  font-weight:500;
+  text-align:center;
+  letter-spacing:.3px;
+}
+.coverage-note i{color:#d7ec8f;margin-right:8px}
+
+/* ===== CTA options ===== */
+.cta-options{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+  max-width:1000px;margin:0 auto;
+}
+.cta-option{
+  background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:28px 20px;text-align:center;transition:.3s;
+  border-bottom:4px solid var(--lime);
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+}
+.cta-option:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(7,61,74,.15)}
+.cta-option i{font-size:28px;color:var(--teal)}
+.cta-option h4{font-size:15px;color:var(--teal-dark)}
+.cta-option p{font-size:13px;color:var(--muted);flex:1}
+.cta-option .btn{font-size:13px;padding:10px 20px}
 
 /* Footer */
 footer{background:var(--teal-dark);color:rgba(255,255,255,.82);padding:64px 0 0}
@@ -285,6 +335,7 @@ footer a:hover{color:#d7ec8f}
   .hero-grid,.split,.ph-grid,.lymph-grid{grid-template-columns:1fr}
   .cards,.digital-grid{grid-template-columns:1fr 1fr}
   .why-grid,.feat-grid,.steps{grid-template-columns:1fr 1fr}
+  .channels-grid{grid-template-columns:1fr 1fr}
   .cta-options{grid-template-columns:1fr 1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .nav-links{position:fixed;inset:0 0 0 auto;width:min(320px,80%);background:#fff;flex-direction:column;align-items:flex-start;padding:90px 34px;gap:22px;transform:translateX(100%);transition:.4s;box-shadow:-10px 0 30px rgba(0,0,0,.12)}
@@ -295,9 +346,10 @@ footer a:hover{color:#d7ec8f}
   .hamburger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 }
 @media (max-width:640px){
-  .cards,.why-grid,.feat-grid,.steps,.digital-grid,.cta-options,.footer-grid,.lymph-grid{grid-template-columns:1fr}
+  .cards,.why-grid,.feat-grid,.steps,.digital-grid,.channels-grid,.cta-options,.footer-grid,.lymph-grid{grid-template-columns:1fr}
   section{padding:54px 0}
   .hero{min-height:auto;padding:64px 0}
+  .coverage-panel{padding:40px 24px}
 }
 
 </style>
@@ -324,7 +376,7 @@ footer a:hover{color:#d7ec8f}
     <div>
       <span class="eyebrow"><i class="fa-solid fa-laptop-medical"></i> Digital Rehabilitation Programmes for Institutions</span>
       <h1>Digital rehabilitation,<br><em>deployed at scale for your people</em></h1>
-      <p class="sub">We design and deliver digital physiotherapy programmes inside your organization — for staff, patients, members or athletes. Video-guided, tracked, and clinically supervised from Mombasa and Nairobi.</p>
+      <p class="sub">We design and deliver digital physiotherapy programmes inside your organization — for staff, patients, members or athletes. Video-guided, tracked, and clinically supervised across Kenya, East Africa and the wider continent.</p>
       <div class="hero-actions">
         <a href="contact.html" class="btn btn-lime"><i class="fa-solid fa-paper-plane"></i> Request a Programme Proposal</a>
         <a href="#how" class="btn btn-outline">How It Works <i class="fa-solid fa-arrow-down"></i></a>
@@ -362,7 +414,7 @@ footer a:hover{color:#d7ec8f}
     <div class="sec-head reveal">
       <span class="kicker">How It Works</span>
       <h2>A Digital Rehabilitation Programme Designed Around Your Institution</h2>
-      <p>From assessment to ongoing clinical supervision — one integrated programme, delivered digitally to every person you nominate.</p>
+      <p>From assessment to ongoing clinical supervision — one integrated programme, delivered digitally to every person you nominate, wherever they are based.</p>
     </div>
     <div class="steps">
       <div class="step reveal">
@@ -373,7 +425,7 @@ footer a:hover{color:#d7ec8f}
       <div class="step reveal">
         <i class="fa-solid fa-user-doctor"></i>
         <h3>Clinical Assessment</h3>
-        <p>Our physiotherapists assess each participant (in-person or remotely) and design an individualised rehabilitation plan.</p>
+        <p>Our physiotherapists assess each participant — in-person or remotely — and design an individualised rehabilitation plan.</p>
       </div>
       <div class="step reveal">
         <i class="fa-solid fa-mobile-screen-button"></i>
@@ -447,7 +499,7 @@ footer a:hover{color:#d7ec8f}
       <div class="digital-card reveal">
         <div class="d-icon"><i class="fa-solid fa-laptop-medical"></i></div>
         <h3>Telerehabilitation</h3>
-        <p>Secure video consultations and remote assessments bring expert physiotherapy to your staff, members or patients — wherever they are based.</p>
+        <p>Secure video consultations and remote assessments bring expert physiotherapy to your staff, members or patients — wherever they are based, in any country.</p>
         <span class="d-tag">Care Anywhere</span>
       </div>
     </div>
@@ -499,20 +551,62 @@ footer a:hover{color:#d7ec8f}
     <div class="sec-head reveal">
       <span class="kicker">Delivery Options</span>
       <h2>On-Site, Remote, Mobile — or All Three</h2>
-      <p>Programmes are delivered through whichever combination fits your operations.</p>
+      <p>Programmes are delivered through whichever combination fits your operations, wherever your people are based.</p>
     </div>
     <div class="cards">
       <div class="card reveal">
         <div class="card-head"><div class="card-icon"><i class="fa-solid fa-hospital"></i></div><h3>On-Site Delivery</h3></div>
-        <p class="card-body">Programme onboarding and clinical assessments delivered on-site at your facility by our physiotherapists — in Mombasa, Nairobi or wherever your site is.</p>
+        <p class="card-body">Programme onboarding and clinical assessments delivered on-site at your facility by our physiotherapists — wherever your facility is located.</p>
       </div>
       <div class="card reveal">
         <div class="card-head"><div class="card-icon"><i class="fa-solid fa-laptop-medical"></i></div><h3>Remote / Digital</h3></div>
-        <p class="card-body">Programmes delivered through our digital platform and telerehab — scalable to hundreds or thousands of participants across Kenya or the region.</p>
+        <p class="card-body">Programmes delivered through our digital platform and telerehab — scalable to hundreds or thousands of participants across multiple countries simultaneously.</p>
       </div>
       <div class="card reveal">
         <div class="card-head"><div class="card-icon"><i class="fa-solid fa-truck-medical"></i></div><h3>Mobile &amp; Home-Based</h3></div>
-        <p class="card-body">For senior staff, expatriates or high-need participants, we deliver physiotherapy in-person at their homes, hotels or offices.</p>
+        <p class="card-body">For senior staff, expatriates or high-need participants, we deliver physiotherapy in-person at their homes, hotels or offices — anywhere they are based.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COVERAGE — THREE DELIVERY CHANNELS ===== -->
+<section style="background:linear-gradient(135deg,#f0f9fb 0%,#e1f0f5 100%)">
+  <div class="container">
+    <div class="coverage-panel reveal">
+      <div class="cov-inner">
+        <span class="cov-kicker">Our Coverage</span>
+        <h3>Delivered Across Kenya, East Africa and Beyond</h3>
+        <p class="cov-desc">Physio Dynamic Africa operates through a distributed continental delivery model built on three integrated channels. This means we reach any partner, any team or any patient — wherever they are located — without the constraints of a fixed clinical premises. Geography is never a barrier to the care we deliver.</p>
+
+        <div class="channels-grid">
+
+          <div class="channel-card">
+            <div class="channel-icon"><i class="fa-solid fa-hospital"></i></div>
+            <h4>On-Site Clinical Deployment</h4>
+            <span class="channel-tag">Into Your Facility</span>
+            <p>We embed licensed physiotherapists directly into partner facilities — hospitals, corporate wellness centres, sports organizations, institutional clinics and community health programmes. Our teams operate inside your premises under a joint service agreement, a shared clinical governance framework, and a single point of accountability.</p>
+          </div>
+
+          <div class="channel-card">
+            <div class="channel-icon"><i class="fa-solid fa-truck-medical"></i></div>
+            <h4>Mobile &amp; Field-Based Service</h4>
+            <span class="channel-tag">Wherever Your People Are</span>
+            <p>For partners whose staff, members or patients are distributed across regions, we mobilize physiotherapy teams to homes, hotels, workplaces, field sites and community locations. This channel serves corporate wellness programmes, expatriate and diplomatic staff, elderly and homebound patients, and any partner requiring delivery beyond a fixed clinical setting.</p>
+          </div>
+
+          <div class="channel-card">
+            <div class="channel-icon"><i class="fa-solid fa-laptop-medical"></i></div>
+            <h4>Digital &amp; Telerehabilitation</h4>
+            <span class="channel-tag">Anywhere with Internet</span>
+            <p>Through our digital rehabilitation platform — secure video consultations, remote clinical assessment, smart-device tracking and automated adherence monitoring — we deliver physiotherapy to participants anywhere with an internet connection. This channel is designed for continental scale, allowing partners to extend our services across multiple countries simultaneously.</p>
+          </div>
+
+        </div>
+
+        <div class="coverage-note">
+          <i class="fa-solid fa-globe"></i>Wherever your people are, we deliver the care they need. That is the whole model.
+        </div>
       </div>
     </div>
   </div>
@@ -559,7 +653,7 @@ footer a:hover{color:#d7ec8f}
 <section class="cta-band">
   <div class="container reveal">
     <h2>Bring a Digital Rehabilitation Programme to Your Institution</h2>
-    <p>From corporates to hospitals, insurers to sports organizations — we design programmes that fit.</p>
+    <p>From corporates to hospitals, insurers to sports organizations — we design programmes that fit, wherever your people are.</p>
     <a href="contact.html" class="btn"><i class="fa-solid fa-paper-plane"></i> Start the Conversation</a>
   </div>
 </section>
@@ -568,7 +662,7 @@ footer a:hover{color:#d7ec8f}
   <div class="container footer-grid">
     <div class="footer-brand">
       <img src="images/logo-dark.jpg" alt="Physio Dynamic Africa">
-      <p>Innovative, evidence-based and patient-centered physiotherapy — partnering with organizations across Mombasa, Nairobi and Africa.</p>
+      <p>Innovative, evidence-based and patient-centered physiotherapy — partnering with organizations across Kenya, East Africa and the wider continent.</p>
     </div>
     <div>
       <h4>Quick Links</h4>
@@ -595,7 +689,7 @@ footer a:hover{color:#d7ec8f}
       <h4>Get In Touch</h4>
       <ul>
         <li><i class="fa-solid fa-envelope"></i><a href="mailto:info@physiodynamicafrica.com">info@physiodynamicafrica.com</a></li>
-        <li><i class="fa-solid fa-location-dot"></i>Mombasa &amp; Nairobi, Kenya</li>
+        <li><i class="fa-solid fa-globe"></i>Kenya · East Africa · Beyond</li>
       </ul>
     </div>
   </div>
