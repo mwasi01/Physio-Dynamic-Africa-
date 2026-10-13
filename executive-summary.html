@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Summary — Partnership Proposal | Physio Dynamic Africa</title>
+<meta name="description" content="Executive Summary — Partnership Proposal. Physio Dynamic Africa — institutional physiotherapy partnerships delivered across Kenya, East Africa and the wider continent.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="icon" href="images/logo-vertical.jpg">
+<style>
+
+/* ===== Physio Dynamic Africa — Executive Summary (Print-Ready A4) ===== */
+:root{
+  --teal:#0b5566; --teal-dark:#073d4a; --teal-light:#e3f0f3;
+  --lime:#a4c639; --lime-dark:#7f9c22; --lime-light:#f3f8e2;
+  --ink:#1e3238; --muted:#5a7078; --bg:#f5fafb; --white:#fff;
+  --orange:#e8722b; --orange-dark:#c45a17;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Poppins',sans-serif;
+  color:var(--ink);
+  background:#dde4e6;
+  line-height:1.5;
+  padding:96px 16px 40px;
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* === A4 Page Container === */
+.page{
+  width:210mm;
+  min-height:297mm;
+  margin:0 auto 24px auto;
+  background:#fff;
+  box-shadow:0 8px 30px rgba(7,61,74,.18);
+  position:relative;
+  overflow:hidden;
+  page-break-after:always;
+  break-after:page;
+}
+.page:last-child{page-break-after:auto;break-after:auto}
+.page-inner{
+  padding:14mm 14mm 12mm 14mm;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+}
+
+/* === HEADER WITH LOGO === */
+.doc-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 16px;
+  background:var(--teal-dark);
+  border-radius:10px;
+  margin-bottom:20px;
+}
+.doc-header .logo{
+  height:44px;
+  width:auto;
+  background:#fff;
+  padding:4px 10px;
+  border-radius:8px;
+}
+.doc-header .partner-mark{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#fff;
+  font-size:11px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  font-weight:600;
+}
+.doc-header .partner-mark i{
+  font-size:20px;
+  color:#d7ec8f;
+}
+
+/* === TITLE BAND === */
+.title-band{
+  background:linear-gradient(90deg,var(--teal-dark),var(--teal));
+  color:#fff;
+  padding:22px 26px;
+  border-radius:12px;
+  margin-bottom:22px;
+  position:relative;
+  overflow:hidden;
+}
+.title-band::before{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:22px 22px;opacity:.6;
+  pointer-events:none;
+}
+.title-band > *{position:relative;z-index:1}
+.title-band h1{
+  font-size:24px;
+  font-weight:800;
+  letter-spacing:-.3px;
+  margin-bottom:6px;
+}
+.title-band h1 em{
+  color:#d7ec8f;
+  font-style:normal;
+}
+.title-band .subtitle{
+  font-size:13px;
+  color:rgba(255,255,255,.88);
+  font-weight:400;
+  line-height:1.5;
+}
+
+/* === SECTION BLOCKS === */
+.block{
+  border-radius:12px;
+  padding:20px 22px;
+  margin-bottom:16px;
+  position:relative;
+  overflow:hidden;
+}
+.block::before{
+  content:"";position:absolute;inset:0;
+  opacity:.15;
+  pointer-events:none;
+}
+.block > *{position:relative;z-index:1}
+
+/* Vision block — warm orange */
+.block-vision{
+  background:linear-gradient(90deg,#f59a3e,#e8722b);
+  color:#fff;
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+}
+.block-vision .block-icon{
+  width:52px;height:52px;
+  border-radius:14px;
+  background:rgba(255,255,255,.22);
+  display:grid;place-items:center;
+  font-size:24px;
+  color:#fff;
+  flex-shrink:0;
+}
+.block-vision h2{
+  font-size:17px;
+  font-weight:700;
+  margin-bottom:8px;
+  color:#fff;
+}
+.block-vision p{
+  font-size:13.5px;
+  color:rgba(255,255,255,.95);
+  line-height:1.55;
+}
+
+/* Capabilities block — orange gradient */
+.block-cap{
+  background:linear-gradient(90deg,#f5a623,#e8722b);
+  color:#fff;
+  position:relative;
+  padding-left:80px;
+}
+.block-cap::after{
+  content:"";
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:60px;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,.15) 0,
+      rgba(255,255,255,.15) 6px,
+      rgba(0,0,0,.08) 6px,
+      rgba(0,0,0,.08) 12px
+    );
+  border-radius:12px 0 0 12px;
+}
+.block-cap h2{
+  font-size:17px;
+  font-weight:700;
+  margin-bottom:12px;
+  color:#fff;
+  position:relative;
+  z-index:1;
+}
+.block-cap ul{
+  display:grid;
+  gap:8px;
+  position:relative;
+  z-index:1;
+}
+.block-cap ul li{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:13.5px;
+  color:#fff;
+  line-height:1.5;
+}
+.block-cap ul li i{
+  color:#fff;
+  font-size:11px;
+  margin-top:6px;
+  flex-shrink:0;
+  opacity:.95;
+}
+
+/* === PARTNERSHIP MODEL === */
+.model-title{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin:22px 0 16px;
+}
+.model-title::before,
+.model-title::after{
+  content:"";
+  flex:1;
+  height:2px;
+  background:repeating-linear-gradient(
+    to right,
+    var(--teal-light) 0,
+    var(--teal-light) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+.model-title h2{
+  font-size:18px;
+  font-weight:700;
+  color:var(--teal-dark);
+  white-space:nowrap;
+  letter-spacing:-.2px;
+}
+
+.model-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:14px;
+  align-items:stretch;
+  margin-bottom:22px;
+}
+.model-card{
+  border-radius:12px;
+  padding:18px 16px;
+  color:#fff;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  position:relative;
+  overflow:hidden;
+}
+.model-card::before{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);
+  background-size:18px 18px;opacity:.6;
+  pointer-events:none;
+}
+.model-card > *{position:relative;z-index:1}
+.model-card.hospital{
+  background:linear-gradient(135deg,#e8722b,#c45a17);
+}
+.model-card.physio{
+  background:linear-gradient(135deg,#7f9c22,#4a6b14);
+}
+.model-card.bridge{
+  background:linear-gradient(135deg,#0b5566,#073d4a);
+}
+.model-card .mc-icon{
+  font-size:28px;
+  margin-bottom:2px;
+}
+.model-card.hospital .mc-icon{color:#ffd9b8}
+.model-card.physio .mc-icon{color:#d7ec8f}
+.model-card.bridge .mc-icon{color:#d7ec8f}
+.model-card h3{
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.2px;
+  line-height:1.3;
+}
+.model-card .mc-role{
+  font-size:11.5px;
+  font-weight:500;
+  color:rgba(255,255,255,.9);
+  line-height:1.45;
+}
+.model-card .mc-tag{
+  display:inline-block;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  color:#fff;
+  border-top:1px solid rgba(255,255,255,.3);
+  padding-top:8px;
+  margin-top:auto;
+  width:100%;
+  text-align:center;
+}
+
+/* === BENEFITS === */
+.benefits-title{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin:22px 0 16px;
+}
+.benefits-title::before,
+.benefits-title::after{
+  content:"";
+  flex:1;
+  height:2px;
+  background:repeating-linear-gradient(
+    to right,
+    var(--teal-light) 0,
+    var(--teal-light) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+.benefits-title h2{
+  font-size:18px;
+  font-weight:700;
+  color:var(--teal-dark);
+  white-space:nowrap;
+  letter-spacing:-.2px;
+}
+
+.benefits-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:22px;
+}
+.benefit{
+  background:#f5fafb;
+  border-radius:12px;
+  padding:20px 14px;
+  text-align:center;
+  border:1px solid #e6eef0;
+  transition:.3s;
+}
+.benefit:hover{transform:translateY(-4px);border-color:var(--lime)}
+.benefit .b-icon{
+  width:56px;height:56px;
+  margin:0 auto 12px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--teal),#128096);
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-size:22px;
+  box-shadow:0 6px 16px rgba(11,85,102,.2);
+}
+.benefit:nth-child(2) .b-icon{background:linear-gradient(135deg,var(--lime),#7f9c22)}
+.benefit:nth-child(3) .b-icon{background:linear-gradient(135deg,#e8a13a,#c97f1b)}
+.benefit:nth-child(4) .b-icon{background:linear-gradient(135deg,#8a5fc0,#6a3fa0)}
+.benefit h4{
+  font-size:13px;
+  font-weight:700;
+  color:var(--teal-dark);
+  margin-bottom:6px;
+  line-height:1.3;
+}
+.benefit p{
+  font-size:11.5px;
+  color:var(--muted);
+  line-height:1.45;
+}
+
+/* === ROADMAP === */
+.roadmap-title{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin:22px 0 16px;
+}
+.roadmap-title::before,
+.roadmap-title::after{
+  content:"";
+  flex:1;
+  height:2px;
+  background:repeating-linear-gradient(
+    to right,
+    var(--teal-light) 0,
+    var(--teal-light) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+.roadmap-title h2{
+  font-size:18px;
+  font-weight:700;
+  color:var(--teal-dark);
+  white-space:nowrap;
+  letter-spacing:-.2px;
+}
+
+.roadmap-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:12px;
+  margin-bottom:22px;
+}
+.roadmap-step{
+  border-radius:12px;
+  padding:18px 16px;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.roadmap-step::before{
+  content:"";
+  position:absolute;
+  top:0;right:0;
+  width:70px;height:70px;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  transform:translate(30%,-30%);
+}
+.roadmap-step > *{position:relative;z-index:1}
+.roadmap-step:nth-child(1){
+  background:linear-gradient(135deg,#e8722b,#c45a17);
+}
+.roadmap-step:nth-child(2){
+  background:linear-gradient(135deg,#e8a13a,#c97f1b);
+}
+.roadmap-step:nth-child(3){
+  background:linear-gradient(135deg,#7f9c22,#4a6b14);
+}
+.roadmap-step .months{
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:-.3px;
+  margin-bottom:4px;
+}
+.roadmap-step .phase{
+  font-size:13px;
+  font-weight:600;
+  margin-bottom:8px;
+  color:rgba(255,255,255,.98);
+}
+.roadmap-step .desc{
+  font-size:11.5px;
+  color:rgba(255,255,255,.85);
+  line-height:1.5;
+}
+
+/* === CLOSING CTA === */
+.closing-band{
+  background:linear-gradient(90deg,var(--teal-dark),var(--teal));
+  color:#fff;
+  border-radius:12px;
+  padding:24px 26px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  margin-top:auto;
+}
+.closing-band::before{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:22px 22px;opacity:.6;
+  pointer-events:none;
+}
+.closing-band > *{position:relative;z-index:1}
+.closing-band h3{
+  font-size:18px;
+  font-weight:700;
+  margin-bottom:6px;
+  letter-spacing:-.2px;
+}
+.closing-band p{
+  font-size:13px;
+  color:rgba(255,255,255,.88);
+  margin-bottom:16px;
+  line-height:1.55;
+}
+.closing-band .cta-line{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:#a4c639;
+  color:#073d4a;
+  padding:12px 26px;
+  border-radius:50px;
+  font-weight:700;
+  font-size:13.5px;
+  letter-spacing:.3px;
+  box-shadow:0 8px 20px rgba(164,198,57,.35);
+}
+.closing-band .cta-line i{
+  font-size:15px;
+}
+
+/* === FOOTER === */
+.doc-footer{
+  margin-top:22px;
+  padding-top:14px;
+  border-top:1px solid #e6eef0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:10.5px;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.doc-footer .mark{
+  color:var(--lime-dark);
+  font-weight:700;
+}
+
+/* === STICKY ACTION BAR (screen only) === */
+.action-bar{
+  position:fixed;
+  top:0;left:0;right:0;
+  background:linear-gradient(90deg,var(--teal-dark),var(--teal));
+  color:#fff;
+  padding:12px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;
+  z-index:200;
+  box-shadow:0 4px 20px rgba(7,61,74,.25);
+}
+.action-bar-left{
+  display:flex;align-items:center;gap:12px;
+  font-size:14px;font-weight:500;
+}
+.action-bar-left i{font-size:20px;color:#d7ec8f;}
+.action-bar-left strong{color:#fff;font-weight:700;}
+.action-bar-left span{color:rgba(255,255,255,.8);font-weight:400;}
+.action-bar-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#a4c639;color:#073d4a;
+  border:none;padding:11px 22px;
+  border-radius:50px;font-family:inherit;
+  font-weight:700;font-size:14.5px;
+  cursor:pointer;transition:.3s;
+  box-shadow:0 8px 20px rgba(164,198,57,.4);
+  white-space:nowrap;
+}
+.action-bar-cta:hover{background:#c0e05c;transform:translateY(-2px);}
+.action-bar-cta i{font-size:16px;}
+.action-bar-tip{
+  display:flex;align-items:center;gap:8px;
+  font-size:12.5px;color:rgba(255,255,255,.7);
+  padding-left:12px;border-left:1px solid rgba(255,255,255,.2);
+}
+.action-bar-tip kbd{
+  background:rgba(255,255,255,.15);
+  padding:2px 8px;border-radius:5px;
+  font-family:monospace;font-size:11.5px;
+  color:#d7ec8f;font-weight:600;
+}
+
+/* === FLOATING FALLBACK (mobile) === */
+.print-fab{
+  position:fixed;bottom:20px;right:20px;
+  background:var(--lime);color:#fff;
+  border:none;padding:14px 22px;
+  border-radius:50px;font-family:inherit;
+  font-weight:700;font-size:14.5px;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(127,156,34,.5);
+  display:none;align-items:center;gap:10px;
+  z-index:200;transition:.3s;
+}
+.print-fab:hover{background:var(--lime-dark);transform:translateY(-2px);}
+
+/* ===== PRINT RULES ===== */
+@page{
+  size:A4;
+  margin:0;
+}
+@media print{
+  html,body{
+    background:#fff !important;
+    padding:0 !important;
+    margin:0 !important;
+  }
+  .action-bar,
+  .print-fab{
+    display:none !important;
+  }
+  .page{
+    width:210mm !important;
+    min-height:auto !important;
+    margin:0 !important;
+    box-shadow:none !important;
+    page-break-after:avoid;
+    break-after:avoid;
+    overflow:visible;
+  }
+  .page-inner{padding:12mm 12mm 10mm 12mm !important;}
+}
+
+@media (max-width:800px){
+  body{padding:80px 10px 30px;}
+  .page{width:100%;min-height:auto;}
+  .page-inner{padding:24px 18px !important;}
+  .model-grid,
+  .benefits-grid,
+  .roadmap-grid{grid-template-columns:1fr !important;}
+  .doc-header{flex-direction:column;gap:10px;text-align:center;}
+  .action-bar{padding:10px 14px;gap:10px;}
+  .action-bar-left span,.action-bar-tip{display:none;}
+  .action-bar-left strong{font-size:13px;}
+  .action-bar-cta{padding:9px 16px;font-size:13px;}
+  .action-bar-cta span{display:none;}
+  .print-fab{display:inline-flex !important;}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============ STICKY ACTION BAR ============ -->
+<div class="action-bar">
+  <div class="action-bar-left">
+    <i class="fa-solid fa-file-pdf"></i>
+    <strong>Executive Summary</strong>
+    <span>— Partnership Proposal, ready to share</span>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:16px">
+    <div class="action-bar-tip">
+      Tip: press <kbd>Ctrl</kbd> + <kbd>P</kbd>
+    </div>
+    <button class="action-bar-cta" onclick="window.print()">
+      <i class="fa-solid fa-download"></i>
+      <span>Save as PDF</span>
+    </button>
+  </div>
+</div>
+
+<!-- ============ DOCUMENT PAGE ============ -->
+<section class="page">
+  <div class="page-inner">
+
+    <!-- HEADER WITH LOGOS -->
+    <div class="doc-header">
+      <img src="images/logo-horizontal.jpg" alt="Physio Dynamic Africa" class="logo">
+      <div class="partner-mark">
+        <i class="fa-solid fa-handshake"></i>
+        Partnership Proposal
+      </div>
+    </div>
+
+    <!-- TITLE BAND -->
+    <div class="title-band">
+      <h1>Executive Summary — <em>Partnership Proposal</em></h1>
+      <p class="subtitle">A structured collaboration to establish a state-of-the-art physiotherapy and rehabilitation clinic at Bomu Hospital, delivering world-class rehabilitation care to patients across the Coast region and beyond.</p>
+    </div>
+
+    <!-- VISION BLOCK -->
+    <div class="block block-vision">
+      <div class="block-icon">
+        <i class="fa-solid fa-bullseye"></i>
+      </div>
+      <div>
+        <h2>Our Vision</h2>
+        <p>Establish a state-of-the-art physiotherapy and rehabilitation clinic within Bomu Hospital's premises — delivering world-class, evidence-based rehabilitation care to patients in Mombasa and across the Coast region.</p>
+      </div>
+    </div>
+
+    <!-- CAPABILITIES BLOCK -->
+    <div class="block block-cap">
+      <h2>Our Capabilities</h2>
+      <ul>
+        <li><i class="fa-solid fa-circle"></i> Stroke recovery, orthopaedic and post-surgical rehabilitation</li>
+        <li><i class="fa-solid fa-circle"></i> Sports injury management, geriatric and neurological rehabilitation</li>
+        <li><i class="fa-solid fa-circle"></i> Lymphatic management, digital and telerehabilitation</li>
+        <li><i class="fa-solid fa-circle"></i> Expert, evidence-based care delivered by licensed physiotherapists</li>
+      </ul>
+    </div>
+
+    <!-- PARTNERSHIP MODEL -->
+    <div class="model-title">
+      <h2>Partnership Model</h2>
+    </div>
+
+    <div class="model-grid">
+      <div class="model-card hospital">
+        <i class="fa-solid fa-hospital mc-icon"></i>
+        <h3>Bomu Hospital</h3>
+        <span class="mc-role">Clinical space, patient referrals, medical infrastructure, joint governance oversight</span>
+        <span class="mc-tag">Facility &amp; Referrals</span>
+      </div>
+
+      <div class="model-card bridge">
+        <i class="fa-solid fa-handshake mc-icon"></i>
+        <h3>Collaborative Care</h3>
+        <span class="mc-role">A single integrated rehabilitation service delivered under a joint clinical governance framework</span>
+        <span class="mc-tag">Joint Framework</span>
+      </div>
+
+      <div class="model-card physio">
+        <i class="fa-solid fa-user-doctor mc-icon"></i>
+        <h3>Physio Dynamic Africa</h3>
+        <span class="mc-role">Licensed physiotherapists, clinical protocols, equipment, outcome reporting</span>
+        <span class="mc-tag">Staffing &amp; Rehab Programs</span>
+      </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="benefits-title">
+      <h2>Benefits for Bomu Hospital</h2>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit">
+        <div class="b-icon"><i class="fa-solid fa-circle-plus"></i></div>
+        <h4>Expanded Services</h4>
+        <p>A full physiotherapy department — without capital outlay</p>
+      </div>
+      <div class="benefit">
+        <div class="b-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+        <h4>Patient Recovery Gains</h4>
+        <p>Improved clinical outcomes and higher patient satisfaction</p>
+      </div>
+      <div class="benefit">
+        <div class="b-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <h4>New Revenue Stream</h4>
+        <p>Transparent revenue-sharing model with no downside risk</p>
+      </div>
+      <div class="benefit">
+        <div class="b-icon"><i class="fa-solid fa-award"></i></div>
+        <h4>Enhanced Reputation</h4>
+        <p>Position Bomu as the Coast region's leading rehabilitation centre</p>
+      </div>
+    </div>
+
+    <!-- ROADMAP -->
+    <div class="roadmap-title">
+      <h2>Our Roadmap</h2>
+    </div>
+
+    <div class="roadmap-grid">
+      <div class="roadmap-step">
+        <div class="months">0–3 Months</div>
+        <div class="phase">Setup &amp; Staffing</div>
+        <p class="desc">Clinical space preparation, licensing, equipment installation, protocol alignment.</p>
+      </div>
+      <div class="roadmap-step">
+        <div class="months">3–6 Months</div>
+        <div class="phase">Launch Core Services</div>
+        <p class="desc">Referral pathway integration, patient enrolment, core clinical service delivery.</p>
+      </div>
+      <div class="roadmap-step">
+        <div class="months">6+ Months</div>
+        <div class="phase">Expand &amp; Outreach</div>
+        <p class="desc">Service expansion, community outreach, digital rehabilitation rollout, outcome review.</p>
+      </div>
+    </div>
+
+    <!-- CLOSING CTA -->
+    <div class="closing-band">
+      <h3>Let's Transform Rehabilitation Care in Mombasa</h3>
+      <p>We would welcome the opportunity to present this partnership in person to Bomu Hospital's leadership team. A 30–45 minute meeting would allow us to walk through the full clinical and commercial model.</p>
+      <div class="cta-line">
+        <i class="fa-solid fa-handshake"></i>
+        Let's Meet to Discuss This Partnership
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="doc-footer">
+      <span>Executive Summary &middot; 2026</span>
+      <span class="mark">Let's Get Africa Moving</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- Mobile floating fallback -->
+<button class="print-fab" onclick="window.print()">
+  <i class="fa-solid fa-file-pdf"></i> Save as PDF
+</button>
+
+<script>
+  function togglePrintFab(){
+    const fab = document.querySelector('.print-fab');
+    if(!fab) return;
+    if(window.innerWidth <= 800){
+      fab.style.display = 'inline-flex';
+    } else {
+      fab.style.display = 'none';
+    }
+  }
+  window.addEventListener('resize', togglePrintFab);
+  togglePrintFab();
+</script>
+
+</body>
+</html>
