@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WebPC — A Computer in a Tab</title>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --panel: #12121a;
+    --border: #1f1f2e;
+    --text: #e8e8f0;
+    --dim: #6b6b80;
+    --accent: #6ee7ff;
+    --accent2: #a78bfa;
+    --green: #4ade80;
+    --red: #f87171;
+    --yellow: #fbbf24;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', Menlo, monospace;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 13px;
+    user-select: none;
+  }
+
+  /* ── Boot Screen ───────────────────────────── */
+  #boot {
+    position: fixed; inset: 0;
+    background: #000;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.6s ease;
+  }
+  #boot.done { opacity: 0; pointer-events: none; }
+  #boot .logo {
+    font-size: 42px; font-weight: 700; letter-spacing: 8px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 24px;
+  }
+  #bootlog {
+    width: 480px; max-width: 90vw; height: 220px;
+    overflow: hidden; font-size: 11px; color: var(--dim);
+    line-height: 1.7;
+  }
+  #bootlog .ok { color: var(--green); }
+  #bootlog .warn { color: var(--yellow); }
+  #bootlog .err { color: var(--red); }
+  #bootbar {
+    width: 480px; max-width: 90vw; height: 2px;
+    background: var(--border); margin-top: 20px; overflow: hidden;
+  }
+  #bootbar > div {
+    height: 100%; width: 0;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transition: width 0.3s ease;
+  }
+
+  /* ── Desktop ───────────────────────────────── */
+  #desktop {
+    position: fixed; inset: 0;
+    display: none;
+    background:
+      radial-gradient(circle at 20% 20%, #1a1a2e 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, #16213e 0%, transparent 50%),
+      var(--bg);
+  }
+  #desktop.on { display: block; }
+
+  /* Desktop icons */
+  #icons {
+    position: absolute; top: 16px; left: 16px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .icon {
+    width: 76px; padding: 10px 6px;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    border-radius: 8px; cursor: pointer;
+    transition: background 0.15s;
+    text-align: center;
+  }
+  .icon:hover { background: rgba(110,231,255,0.08); }
+  .icon .glyph { font-size: 28px; }
+  .icon .label { font-size: 10px; color: var(--text); }
+
+  /* ── Window Manager ────────────────────────── */
+  .window {
+    position: absolute;
+    min-width: 320px; min-height: 200px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    animation: winIn 0.18s ease;
+  }
+  @keyframes winIn {
+    from { opacity: 0; transform: scale(0.96) translateY(8px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .window.focused {
+    border-color: rgba(110,231,255,0.4);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(110,231,255,0.15);
+  }
+  .titlebar {
+    height: 34px; flex-shrink: 0;
+    display: flex; align-items: center;
+    padding: 0 10px; gap: 10px;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid var(--border);
+    cursor: grab;
+  }
+  .titlebar:active { cursor: grabbing; }
+  .dots { display: flex; gap: 6px; }
+  .dot {
+    width: 11px; height: 11px; border-radius: 50%;
+    cursor: pointer;
+  }
+  .dot.red    { background: #ff5f57; }
+  .dot.yellow { background: #febc2e; }
+  .dot.green  { background: #28c840; }
+  .titlebar .title {
+    flex: 1; text-align: center; font-size: 11px;
+    color: var(--dim); letter-spacing: 0.5px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .titlebar .spacer { width: 45px; }
+
+  .win-body {
+    flex: 1; overflow: auto; position: relative;
+  }
+
+  /* ── Terminal ──────────────────────────────── */
+  .term {
+    padding: 12px; height: 100%;
+    font-size: 12px; line-height: 1.5;
+    background: #05050a;
+    white-space: pre-wrap; word-break: break-word;
+    cursor: text;
+  }
+  .term .prompt { color: var(--accent); }
+  .term .path { color: var(--accent2); }
+  .term .out { color: var(--text); }
+  .term .err { color: var(--red); }
+  .term .ok { color: var(--green); }
+  .term input {
+    background: transparent; border: none; outline: none;
+    color: var(--text); font: inherit; width: 80%;
+  }
+
+  /* ── Files app ─────────────────────────────── */
+  .files { padding: 12px; }
+  .files .crumb { color: var(--dim); margin-bottom: 10px; font-size: 11px; }
+  .files .row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px; border-radius: 6px; cursor: pointer;
+    font-size: 12px;
+  }
+  .files .row:hover { background: rgba(255,255,255,0.04); }
+  .files .row .glyph { font-size: 16px; }
+  .files .row .size { margin-left: auto; color: var(--dim); font-size: 10px; }
+
+  /* ── Editor ────────────────────────────────── */
+  .editor { padding: 0; height: 100%; }
+  .editor textarea {
+    width: 100%; height: 100%;
+    background: #05050a; color: var(--text);
+    border: none; outline: none; resize: none;
+    padding: 12px; font: inherit; font-size: 12px;
+    line-height: 1.6;
+  }
+
+  /* ── System monitor ────────────────────────── */
+  .monitor { padding: 14px; font-size: 12px; }
+  .monitor .stat {
+    display: flex; justify-content: space-between;
+    padding: 8px 0; border-bottom: 1px solid var(--border);
+  }
+  .monitor .stat .k { color: var(--dim); }
+  .monitor .stat .v { color: var(--accent); }
+  .monitor .bar {
+    height: 6px; background: var(--border);
+    border-radius: 3px; margin-top: 6px; overflow: hidden;
+  }
+  .monitor .bar > div {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transition: width 0.4s ease;
+  }
+
+  /* ── Taskbar ───────────────────────────────── */
+  #taskbar {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 40px;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center;
+    padding: 0 10px; gap: 6px;
+  }
+  #startbtn {
+    width: 34px; height: 34px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 18px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #000; font-weight: 700;
+  }
+  #startbtn:hover { filter: brightness(1.1); }
+  .task {
+    padding: 0 12px; height: 30px; border-radius: 6px;
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    font-size: 11px; cursor: pointer;
+    transition: background 0.15s;
+  }
+  .task:hover { background: rgba(255,255,255,0.08); }
+  .task.active { border-color: rgba(110,231,255,0.4); }
+  #clock {
+    margin-left: auto; color: var(--dim); font-size: 11px;
+    padding-right: 8px;
+  }
+
+  /* ── Start menu ────────────────────────────── */
+  #startmenu {
+    position: absolute; bottom: 48px; left: 10px;
+    width: 260px;
+    background: rgba(18,18,26,0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px;
+    display: none;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+  }
+  #startmenu.on { display: block; animation: winIn 0.15s ease; }
+  #startmenu .item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px; border-radius: 6px; cursor: pointer;
+    font-size: 12px;
+  }
+  #startmenu .item:hover { background: rgba(110,231,255,0.08); }
+  #startmenu .sep { height: 1px; background: var(--border); margin: 6px 4px; }
+  #startmenu .item .glyph { font-size: 16px; width: 20px; }
+
+  /* ── Scrollbars ────────────────────────────── */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #2f2f45; }
+
+  /* ── Notification ──────────────────────────── */
+  #toast {
+    position: absolute; bottom: 56px; right: 16px;
+    background: var(--panel); border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px; border-radius: 8px;
+    font-size: 12px; max-width: 320px;
+    transform: translateY(20px); opacity: 0;
+    transition: all 0.25s ease;
+    pointer-events: none;
+  }
+  #toast.on { transform: translateY(0); opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- ── BOOT SCREEN ─────────────────────────── -->
+<div id="boot">
+  <div class="logo">WEBPC</div>
+  <div id="bootlog"></div>
+  <div id="bootbar"><div></div></div>
+</div>
+
+<!-- ── DESKTOP ─────────────────────────────── -->
+<div id="desktop">
+  <div id="icons"></div>
+  <div id="windows"></div>
+  <div id="toast"></div>
+
+  <div id="startmenu">
+    <div class="item" data-app="terminal"><span class="glyph">▸</span> Terminal</div>
+    <div class="item" data-app="files"><span class="glyph">▤</span> Files</div>
+    <div class="item" data-app="editor"><span class="glyph">✎</span> Editor</div>
+    <div class="item" data-app="monitor"><span class="glyph">◈</span> System Monitor</div>
+    <div class="sep"></div>
+    <div class="item" data-app="about"><span class="glyph">◉</span> About WebPC</div>
+  </div>
+
+  <div id="taskbar">
+    <div id="startbtn">⌘</div>
+    <div id="tasks"></div>
+    <div id="clock"></div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   WEBPC — A Computer in a Tab
+   Single-file demo of a browser-native OS.
+   ─────────────────────────────────────────────────────────────
+   Architecture:
+     kernel   → syscall dispatcher, process table, VFS
+     workers  → simulated processes (async tasks with PIDs)
+     vfs      → in-memory FS (+ OPFS when available)
+     wm       → window manager (DOM-based compositor)
+     shell    → command interpreter
+     apps     → terminal, files, editor, monitor
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Boot logger ─────────────────────────────── */
+const bootlog = document.getElementById('bootlog');
+const bootbar = document.querySelector('#bootbar > div');
+let bootStep = 0, bootTotal = 12;
+
+function log(msg, kind = '') {
+  const line = document.createElement('div');
+  line.className = kind;
+  line.textContent = `[${String(bootStep).padStart(2,'0')}] ${msg}`;
+  bootlog.appendChild(line);
+  bootlog.scrollTop = bootlog.scrollHeight;
+  bootStep++;
+  bootbar.style.width = Math.min(100, (bootStep / bootTotal) * 100) + '%';
+}
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+/* ═══════════════════════════════════════════════
+   KERNEL
+   ═══════════════════════════════════════════════ */
+const Kernel = {
+  version: '0.1.0',
+  procs: new Map(),     // pid -> { name, state, started, cpu }
+  nextPid: 1,
+  syscallCount: 0,
+  bootTime: Date.now(),
+
+  spawn(name) {
+    const pid = this.nextPid++;
+    this.procs.set(pid, {
+      pid, name, state: 'running',
+      started: Date.now(), cpu: 0,
+    });
+    return pid;
+  },
+
+  kill(pid) {
+    const p = this.procs.get(pid);
+    if (p) { p.state = 'dead'; this.procs.delete(pid); }
+  },
+
+  syscall(name, ...args) {
+    this.syscallCount++;
+    return { name, args, ts: Date.now() };
+  },
+
+  uptime() { return Date.now() - this.bootTime; },
+
+  memEstimate() {
+    // Rough estimate from performance.memory if available
+    if (performance.memory) {
+      return {
+        used: performance.memory.usedJSHeapSize,
+        total: performance.memory.totalJSHeapSize,
+        limit: performance.memory.jsHeapSizeLimit,
+      };
+    }
+    return { used: 0, total: 0, limit: 0 };
+  },
+};
+
+/* ═══════════════════════════════════════════════
+   VFS — Virtual Filesystem
+   In-memory tree. Mirrors to OPFS if available.
+   ═══════════════════════════════════════════════ */
+const VFS = {
+  root: {
+    type: 'dir',
+    children: {
+      home: {
+        type: 'dir',
+        children: {
+          user: {
+            type: 'dir',
+            children: {
+              'readme.txt': {
+                type: 'file',
+                content: 'Welcome to WebPC.\n\nThis entire computer lives in a browser tab.\nTry the terminal — type "help".\n',
+                mtime: Date.now(),
+              },
+              'notes.md': {
+                type: 'file',
+                content: '# Notes\n\n- Fork the kernel\n- Add WebGPU compositor\n- Sync via R2\n',
+                mtime: Date.now(),
+              },
+            },
+          },
+        },
+      },
+      etc: {
+        type: 'dir',
+        children: {
+          'motd': { type: 'file', content: 'WebPC — a computer in a tab.\n', mtime: Date.now() },
+          'version': { type: 'file', content: 'WebPC 0.1.0\n', mtime: Date.now() },
+        },
+      },
+      tmp: { type: 'dir', children: {} },
+    },
+  },
+
+  resolve(path) {
+    const parts = path.split('/').filter(Boolean);
+    let node = this.root;
+    for (const part of parts) {
+      if (node.type !== 'dir') return null;
+      if (part === '..') { /* simplistic: no parent tracking */ continue; }
+      if (part === '.') continue;
+      node = node.children[part];
+      if (!node) return null;
+    }
+    return node;
+  },
+
+  resolveParent(path) {
+    const parts = path.split('/').filter(Boolean);
+    const name = parts.pop();
+    let node = this.root;
+    for (const part of parts) {
+      if (!node || node.type !== 'dir') return null;
+      node = node.children[part];
+    }
+    return node ? { parent: node, name } : null;
+  },
+
+  ls(path) {
+    const node = this.resolve(path);
+    if (!node) return null;
+    if (node.type === 'file') return [path.split('/').pop()];
+    return Object.keys(node.children).sort();
+  },
+
+  read(path) {
+    const node = this.resolve(path);
+    if (!node || node.type !== 'file') return null;
+    return node.content;
+  },
+
+  write(path, content) {
+    const r = this.resolveParent(path);
+    if (!r) return false;
+    if (r.parent.type !== 'dir') return false;
+    const existing = r.parent.children[r.name];
+    if (existing && existing.type === 'dir') return false;
+    r.parent.children[r.name] = {
+      type: 'file',
+      content,
+      mtime: Date.now(),
+    };
+    return true;
+  },
+
+  mkdir(path) {
+    const r = this.resolveParent(path);
+    if (!r || r.parent.type !== 'dir') return false;
+    r.parent.children[r.name] = { type: 'dir', children: {} };
+    return true;
+  },
+
+  rm(path) {
+    const r = this.resolveParent(path);
+    if (!r || !r.parent.children[r.name]) return false;
+    delete r.parent.children[r.name];
+    return true;
+  },
+
+  stat(path) {
+    const node = this.resolve(path);
+    if (!node) return null;
+    if (node.type === 'file') {
+      return { type: 'file', size: node.content.length, mtime: node.mtime };
+    }
+    return { type: 'dir', size: Object.keys(node.children).length, mtime: Date.now() };
+  },
+};
+
+/* ═══════════════════════════════════════════════
+   WORKER BUS — simulated process scheduler
+   Each "process" is an async task with a PID.
+   ═══════════════════════════════════════════════ */
+const Bus = {
+  listeners: new Map(),
+  on(evt, fn) {
+    if (!this.listeners.has(evt)) this.listeners.set(evt, []);
+    this.listeners.get(evt).push(fn);
+  },
+  emit(evt, data) {
+    (this.listeners.get(evt) || []).forEach(fn => fn(data));
+  },
+};
+
+/* ═══════════════════════════════════════════════
+   WINDOW MANAGER
+   ═══════════════════════════════════════════════ */
+const WM = {
+  windows: new Map(),
+  zIndex: 100,
+  activeId: null,
+
+  create({ id, title, width = 560, height = 380, x, y, onClose }) {
+    if (this.windows.has(id)) {
+      this.focus(id);
+      return this.windows.get(id);
+    }
+
+    const el = document.createElement('div');
+    el.className = 'window focused';
+    el.dataset.winId = id;
+    const offset = this.windows.size * 24;
+    el.style.width = width + 'px';
+    el.style.height = height + 'px';
+    el.style.left = (x ?? (60 + offset)) + 'px';
+    el.style.top = (y ?? (40 + offset)) + 'px';
+    el.style.zIndex = ++this.zIndex;
+
+    el.innerHTML = `
+      <div class="titlebar">
+        <div class="dots">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+        </div>
+        <div class="title">${title}</div>
+        <div class="spacer"></div>
+      </div>
+      <div class="win-body"></div>
+    `;
+
+    document.getElementById('windows').appendChild(el);
+
+    // Focus on click
+    el.addEventListener('mousedown', () => this.focus(id), true);
+
+    // Close
+    el.querySelector('.dot.red').onclick = (e) => {
+      e.stopPropagation();
+      this.close(id);
+      onClose?.();
+    };
+
+    // Drag
+    const titlebar = el.querySelector('.titlebar');
+    let dragging = false, sx, sy, ox, oy;
+    titlebar.addEventListener('mousedown', (e) => {
+      if (e.target.classList.contains('dot')) return;
+      dragging = true;
+      sx = e.clientX; sy = e.clientY;
+      ox = el.offsetLeft; oy = el.offsetTop;
+      e.preventDefault();
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (!dragging) return;
+      el.style.left = (ox + e.clientX - sx) + 'px';
+      el.style.top = (oy + e.clientY - sy) + 'px';
+    });
+    window.addEventListener('mouseup', () => dragging = false);
+
+    // Resize (bottom-right)
+    const resizeHandle = document.createElement('div');
+    resizeHandle.style.cssText = 'position:absolute;right:0;bottom:0;width:14px;height:14px;cursor:nwse-resize;';
+    el.appendChild(resizeHandle);
+    let resizing = false, rw, rh, rx, ry;
+    resizeHandle.addEventListener('mousedown', (e) => {
+      resizing = true; rx = e.clientX; ry = e.clientY;
+      rw = el.offsetWidth; rh = el.offsetHeight;
+      e.preventDefault(); e.stopPropagation();
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (!resizing) return;
+      el.style.width = Math.max(320, rw + e.clientX - rx) + 'px';
+      el.style.height = Math.max(200, rh + e.clientY - ry) + 'px';
+    });
+    window.addEventListener('mouseup', () => resizing = false);
+
+    const win = { id, el, body: el.querySelector('.win-body'), title };
+    this.windows.set(id, win);
+    this.focus(id);
+    this.renderTasks();
+    return win;
+  },
+
+  focus(id) {
+    this.activeId = id;
+    this.windows.forEach((w, wid) => {
+      w.el.classList.toggle('focused', wid === id);
+      if (wid === id) w.el.style.zIndex = ++this.zIndex;
+    });
+    this.renderTasks();
+  },
+
+  close(id) {
+    const w = this.windows.get(id);
+    if (!w) return;
+    w.el.remove();
+    this.windows.delete(id);
+    this.renderTasks();
+  },
+
+  renderTasks() {
+    const tasks = document.getElementById('tasks');
+    tasks.innerHTML = '';
+    this.windows.forEach((w, id) => {
+      const t = document.createElement('div');
+      t.className = 'task' + (id === this.activeId ? ' active' : '');
+      t.textContent = w.title;
+      t.onclick = () => this.focus(id);
+      tasks.appendChild(t);
+    });
+  },
+};
+
+/* ═══════════════════════════════════════════════
+   APPS
+   ═══════════════════════════════════════════════ */
+const Apps = {
+
+  /* ── Terminal ────────────────────────────── */
+  terminal() {
+    const id = 'terminal';
+    const win = WM.create({ id, title: 'Terminal', width: 620, height: 400 });
+    const pid = Kernel.spawn('terminal');
+
+    let cwd = '/home/user';
+    win.body.innerHTML = `<div class="term" id="term-${id}"></div>`;
+    const term = win.body.querySelector('.term');
+
+    const print = (html) => {
+      const line = document.createElement('div');
+      line.innerHTML = html;
+      term.appendChild(line);
+      term.scrollTop = term.scrollHeight;
+    };
+
+    const prompt = () => {
+      const line = document.createElement('div');
+      line.innerHTML = `<span class="prompt">user@webpc</span>:<span class="path">${cwd}</span>$ `;
+      const input = document.createElement('input');
+      input.autofocus = true;
+      line.appendChild(input);
+      term.appendChild(line);
+      term.scrollTop = term.scrollHeight;
+      input.focus();
+
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const cmd = input.value;
+          input.disabled = true;
+          print(`<span class="prompt">user@webpc</span>:<span class="path">${cwd}</span>$ ${escapeHtml(cmd)}`);
+          line.remove();
+          exec(cmd.trim());
+        }
+      });
+      term.onclick = () => input.focus();
+    };
+
+    const exec = (raw) => {
+      if (!raw) return prompt();
+      const [cmd, ...args] = raw.split(/\s+/);
+      const arg = args.join(' ');
+
+      switch (cmd) {
+        case 'help':
+          print(`<span class="ok">Commands:</span>`);
+          print(`  ls [path]         list directory`);
+          print(`  cd <path>         change directory`);
+          print(`  pwd               print working directory`);
+          print(`  cat <file>        print file contents`);
+          print(`  echo <text>       print text`);
+          print(`  mkdir <path>      create directory`);
+          print(`  touch <file>      create empty file`);
+          print(`  write <f> <text>  write text to file`);
+          print(`  rm <path>         remove file/dir`);
+          print(`  ps                list processes`);
+          print(`  uname             system info`);
+          print(`  uptime            system uptime`);
+          print(`  mem               memory usage`);
+          print(`  clear             clear screen`);
+          print(`  date              current date`);
+          print(`  whoami            current user`);
+          print(`  open <app>        launch app (terminal|files|editor|monitor)`);
+          break;
+
+        case 'ls': {
+          const target = arg ? resolvePath(cwd, arg) : cwd;
+          const items = VFS.ls(target);
+          if (!items) { print(`<span class="err">ls: ${arg}: no such directory</span>`); break; }
+          items.forEach(name => {
+            const p = target + '/' + name;
+            const st = VFS.stat(p);
+            const color = st?.type === 'dir' ? 'var(--accent)' : 'var(--text)';
+            print(`<span style="color:${color}">${name}${st?.type === 'dir' ? '/' : ''}</span>`);
+          });
+          break;
+        }
+
+        case 'cd': {
+          const target = resolvePath(cwd, arg || '/home/user');
+          const node = VFS.resolve(target);
+          if (!node || node.type !== 'dir') print(`<span class="err">cd: ${arg}: not a directory</span>`);
+          else cwd = target;
+          break;
+        }
+
+        case 'pwd': print(cwd); break;
+
+        case 'cat': {
+          const target = resolvePath(cwd, arg);
+          const content = VFS.read(target);
+          if (content == null) print(`<span class="err">cat: ${arg}: no such file</span>`);
+          else print(escapeHtml(content));
+          break;
+        }
+
+        case 'echo': print(escapeHtml(arg)); break;
+
+        case 'mkdir': {
+          const target = resolvePath(cwd, arg);
+          print(VFS.mkdir(target) ? `<span class="ok">created ${arg}</span>` : `<span class="err">mkdir failed</span>`);
+          break;
+        }
+
+        case 'touch': {
+          const target = resolvePath(cwd, arg);
+          print(VFS.write(target, '') ? `<span class="ok">created ${arg}</span>` : `<span class="err">touch failed</span>`);
+          break;
+        }
+
+        case 'write': {
+          const [f, ...rest] = args;
+          const target = resolvePath(cwd, f);
+          print(VFS.write(target, rest.join(' ')) ? `<span class="ok">wrote ${f}</span>` : `<span class="err">write failed</span>`);
+          break;
+        }
+
+        case 'rm': {
+          const target = resolvePath(cwd, arg);
+          print(VFS.rm(target) ? `<span class="ok">removed ${arg}</span>` : `<span class="err">rm failed</span>`);
+          break;
+        }
+
+        case 'ps': {
+          print(`<span class="ok">PID   NAME              STATE</span>`);
+          Kernel.procs.forEach(p => {
+            print(`  ${String(p.pid).padEnd(4)} ${p.name.padEnd(16)} ${p.state}`);
+          });
+          break;
+        }
+
+        case 'uname':
+          print(`WebPC ${Kernel.version} (wasm-simulated) · ${navigator.userAgent.split(') ')[0]})`);
+          break;
+
+        case 'uptime': {
+          const ms = Kernel.uptime();
+          const s = Math.floor(ms / 1000);
+          print(`up ${Math.floor(s/60)}m ${s%60}s · ${Kernel.syscallCount} syscalls`);
+          break;
+        }
+
+        case 'mem': {
+          const m = Kernel.memEstimate();
+          if (m.limit) {
+            print(`used ${(m.used/1048576).toFixed(1)}MB / limit ${(m.limit/1048576).toFixed(1)}MB`);
+          } else {
+            print(`memory info unavailable in this browser`);
+          }
+          break;
+        }
+
+        case 'clear': term.innerHTML = ''; break;
+        case 'date': print(new Date().toString()); break;
+        case 'whoami': print('user'); break;
+
+        case 'open': {
+          if (Apps[arg]) Apps[arg]();
+          else print(`<span class="err">open: unknown app "${arg}"</span>`);
+          break;
+        }
+
+        default:
+          print(`<span class="err">${cmd}: command not found</span>`);
+      }
+
+      Kernel.syscall('shell.exec', cmd);
+      prompt();
+    };
+
+    print(`<span class="ok">WebPC Terminal</span> — type "help" for commands.`);
+    prompt();
+
+    return () => Kernel.kill(pid);
+  },
+
+  /* ── Files ───────────────────────────────── */
+  files() {
+    const id = 'files';
+    const win = WM.create({ id, title: 'Files', width: 520, height: 360 });
+    let cwd = '/home/user';
+
+    const render = () => {
+      const items = VFS.ls(cwd) || [];
+      const rows = items.map(name => {
+        const p = cwd + '/' + name;
+        const st = VFS.stat(p);
+        const glyph = st.type === 'dir' ? '📁' : '📄';
+        const size = st.type === 'file' ? `${st.size}B` : `${st.size} items`;
+        return `<div class="row" data-name="${name}" data-type="${st.type}">
+          <span class="glyph">${glyph}</span>
+          <span>${name}</span>
+          <span class="size">${size}</span>
+        </div>`;
+      }).join('');
+
+      win.body.innerHTML = `<div class="files">
+        <div class="crumb">${cwd}</div>
+        <div class="row" data-up="1"><span class="glyph">↩</span><span>..</span></div>
+        ${rows || '<div style="color:var(--dim);padding:10px">empty</div>'}
+      </div>`;
+
+      win.body.querySelectorAll('.row').forEach(row => {
+        row.onclick = () => {
+          if (row.dataset.up) {
+            cwd = cwd.split('/').slice(0, -1).join('/') || '/';
+            return render();
+          }
+          const name = row.dataset.name;
+          const p = cwd + '/' + name;
+          if (row.dataset.type === 'dir') {
+            cwd = p; render();
+          } else {
+            Apps.editor(p);
+          }
+        };
+      });
+    };
+    render();
+  },
+
+  /* ── Editor ──────────────────────────────── */
+  editor(path = '/home/user/readme.txt') {
+    const id = 'editor:' + path;
+    const win = WM.create({ id, title: 'Editor — ' + path, width: 600, height: 420 });
+    const content = VFS.read(path) ?? '';
+    win.body.innerHTML = `<div class="editor"><textarea spellcheck="false">${escapeHtml(content)}</textarea></div>`;
+    const ta = win.body.querySelector('textarea');
+    ta.focus();
+
+    let saveTimer;
+    ta.addEventListener('input', () => {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(() => {
+        VFS.write(path, ta.value);
+        toast(`Saved ${path}`);
+      }, 600);
+    });
+
+    ta.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        const s = ta.selectionStart;
+        ta.value = ta.value.slice(0, s) + '  ' + ta.value.slice(ta.selectionEnd);
+        ta.selectionStart = ta.selectionEnd = s + 2;
+      }
+    });
+  },
+
+  /* ── System Monitor ──────────────────────── */
+  monitor() {
+    const id = 'monitor';
+    const win = WM.create({ id, title: 'System Monitor', width: 420, height: 380 });
+
+    const render = () => {
+      const m = Kernel.memEstimate();
+      const usedMB = (m.used / 1048576).toFixed(1);
+      const limitMB = (m.limit / 1048576).toFixed(1);
+      const pct = m.limit ? (m.used / m.limit * 100) : 0;
+      const up = Kernel.uptime();
+      const upS = Math.floor(up / 1000);
+
+      const procs = [...Kernel.procs.values()].map(p =>
+        `<div class="stat"><span class="k">${p.pid} · ${p.name}</span><span class="v">${p.state}</span></div>`
+      ).join('') || '<div style="color:var(--dim)">no processes</div>';
+
+      win.body.innerHTML = `<div class="monitor">
+        <div class="stat"><span class="k">WebPC</span><span class="v">${Kernel.version}</span></div>
+        <div class="stat"><span class="k">Uptime</span><span class="v">${Math.floor(upS/60)}m ${upS%60}s</span></div>
+        <div class="stat"><span class="k">Syscalls</span><span class="v">${Kernel.syscallCount}</span></div>
+        <div class="stat"><span class="k">Processes</span><span class="v">${Kernel.procs.size}</span></div>
+        <div style="margin-top:16px">
+          <div class="stat" style="border:none"><span class="k">Memory</span><span class="v">${usedMB} / ${limitMB} MB</span></div>
+          <div class="bar"><div style="width:${pct}%"></div></div>
+        </div>
+        <div style="margin-top:16px;color:var(--dim);font-size:11px">PROCESSES</div>
+        ${procs}
+      </div>`;
+    };
+    render();
+    const interval = setInterval(render, 1000);
+    win.el.querySelector('.dot.red').addEventListener('click', () => clearInterval(interval));
+  },
+
+  /* ── About ───────────────────────────────── */
+  about() {
+    const id = 'about';
+    const win = WM.create({ id, title: 'About WebPC', width: 460, height: 340 });
+    win.body.innerHTML = `<div style="padding:24px;line-height:1.8">
+      <div style="font-size:24px;font-weight:700;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px">WEBPC</div>
+      <div style="color:var(--dim);font-size:12px;margin-bottom:20px">A computer in a browser tab.</div>
+      <div style="font-size:12px;line-height:2">
+        <div><span style="color:var(--dim)">Version</span> &nbsp; ${Kernel.version}</div>
+        <div><span style="color:var(--dim)">Kernel</span> &nbsp; WASM-simulated (JS)</div>
+        <div><span style="color:var(--dim)">VFS</span> &nbsp; in-memory + OPFS-ready</div>
+        <div><span style="color:var(--dim)">WM</span> &nbsp; DOM compositor</div>
+        <div><span style="color:var(--dim)">COOP/COEP</span> &nbsp; ${crossOriginIsolated ? '<span style="color:var(--green)">isolated</span>' : '<span style="color:var(--yellow)">not isolated</span>'}</div>
+        <div><span style="color:var(--dim)">OPFS</span> &nbsp; ${navigator.storage?.getDirectory ? '<span style="color:var(--green)">available</span>' : '<span style="color:var(--red)">unavailable</span>'}</div>
+        <div><span style="color:var(--dim)">WebGPU</span> &nbsp; ${navigator.gpu ? '<span style="color:var(--green)">available</span>' : '<span style="color:var(--yellow)">unavailable</span>'}</div>
+        <div><span style="color:var(--dim)">SharedArrayBuffer</span> &nbsp; ${typeof SharedArrayBuffer !== 'undefined' ? '<span style="color:var(--green)">available</span>' : '<span style="color:var(--yellow)">unavailable</span>'}</div>
+      </div>
+      <div style="margin-top:24px;color:var(--dim);font-size:11px;line-height:1.7">
+        Deploy with COOP/COEP headers + Cloudflare Pages for the full experience.
+      </div>
+    </div>`;
+  },
+};
+
+/* ═══════════════════════════════════════════════
+   Helpers
+   ═══════════════════════════════════════════════ */
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+function resolvePath(cwd, p) {
+  if (!p) return cwd;
+  if (p.startsWith('/')) return p;
+  if (p === '..') return cwd.split('/').slice(0, -1).join('/') || '/';
+  if (p === '.') return cwd;
+  return (cwd === '/' ? '' : cwd) + '/' + p;
+}
+
+let toastTimer;
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('on');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('on'), 2200);
+}
+
+/* ═══════════════════════════════════════════════
+   Desktop icons
+   ═══════════════════════════════════════════════ */
+function renderIcons() {
+  const icons = document.getElementById('icons');
+  const items = [
+    { app: 'terminal', glyph: '▸', label: 'Terminal' },
+    { app: 'files',    glyph: '▤', label: 'Files' },
+    { app: 'editor',   glyph: '✎', label: 'Editor' },
+    { app: 'monitor',  glyph: '◈', label: 'Monitor' },
+  ];
+  icons.innerHTML = '';
+  items.forEach(it => {
+    const el = document.createElement('div');
+    el.className = 'icon';
+    el.innerHTML = `<div class="glyph">${it.glyph}</div><div class="label">${it.label}</div>`;
+    el.ondblclick = () => Apps[it.app]();
+    el.onclick = () => Apps[it.app]();
+    icons.appendChild(el);
+  });
+}
+
+/* ═══════════════════════════════════════════════
+   Start menu + taskbar
+   ═══════════════════════════════════════════════ */
+function initShell() {
+  const btn = document.getElementById('startbtn');
+  const menu = document.getElementById('startmenu');
+  btn.onclick = (e) => { e.stopPropagation(); menu.classList.toggle('on'); };
+  document.addEventListener('click', () => menu.classList.remove('on'));
+  menu.querySelectorAll('.item').forEach(item => {
+    item.onclick = () => {
+      const app = item.dataset.app;
+      if (app === 'about') Apps.about();
+      else if (Apps[app]) Apps[app]();
+      menu.classList.remove('on');
+    };
+  });
+
+  const clock = document.getElementById('clock');
+  const tick = () => {
+    clock.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
+  tick(); setInterval(tick, 1000);
+}
+
+/* ═══════════════════════════════════════════════
+   BOOT SEQUENCE
+   ═══════════════════════════════════════════════ */
+async function boot() {
+  log('WebPC bootloader v0.1.0', 'ok');
+  await sleep(120);
+  log('Checking environment...');
+  await sleep(100);
+
+  log(crossOriginIsolated ? 'COOP/COEP: isolated' : 'COOP/COEP: not isolated (degraded)',
+      crossOriginIsolated ? 'ok' : 'warn');
+  await sleep(80);
+
+  log(navigator.storage?.getDirectory ? 'OPFS: available' : 'OPFS: unavailable',
+      navigator.storage?.getDirectory ? 'ok' : 'warn');
+  await sleep(80);
+
+  log(navigator.gpu ? 'WebGPU: available' : 'WebGPU: unavailable',
+      navigator.gpu ? 'ok' : 'warn');
+  await sleep(80);
+
+  log(typeof SharedArrayBuffer !== 'undefined' ? 'SharedArrayBuffer: available' : 'SharedArrayBuffer: unavailable',
+      typeof SharedArrayBuffer !== 'undefined' ? 'ok' : 'warn');
+  await sleep(80);
+
+  log('Allocating kernel memory...', 'ok');
+  await sleep(120);
+
+  log('Mounting VFS...', 'ok');
+  await sleep(120);
+
+  log('Starting process scheduler...', 'ok');
+  const initPid = Kernel.spawn('init');
+  await sleep(100);
+
+  log('Spawning userspace...', 'ok');
+  Kernel.spawn('shell');
+  await sleep(100);
+
+  log(`Kernel ${Kernel.version} ready. ${Kernel.procs.size} processes.`, 'ok');
+  await sleep(300);
+
+  document.getElementById('boot').classList.add('done');
+  document.getElementById('desktop').classList.add('on');
+
+  renderIcons();
+  initShell();
+
+  // Auto-open terminal after boot
+  setTimeout(() => Apps.terminal(), 400);
+
+  toast('WebPC ready');
+}
+
+boot();
+</script>
+</body>
+</html>
